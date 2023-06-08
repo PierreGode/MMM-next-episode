@@ -25,6 +25,13 @@ git clone https://github.com/PierreGode/MMM-next-episode.git
 ```
 npm install
 ```
+required dependencies
+```
+npm install request
+npm install qrcode
+npm install uuid
+```
+
 
 In MagicMirror/config/config.js
 ```
