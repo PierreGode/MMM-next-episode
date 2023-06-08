@@ -25,14 +25,15 @@ processData: function(data) {
     let processedData = [];
     for(let i=0; i<dataArr.length; i++){
         try {
-            let showDataArr = dataArr[i].trim().split(' ');
+            // Split each line into parts
+            let showDataArr = dataArr[i].split(' ');
             const showData = {
                 id: showDataArr[0],
                 time: showDataArr[1],
-                season: showDataArr[1],
+                season: showDataArr[2],
                 episode: showDataArr[3],
-                showName: showDataArr[2].split('/').pop().split('?')[0].split('.jpg')[0],
-                airDate: (showDataArr.slice(1).join(' ').includes('in') ? showDataArr.slice(3).join(' ') : showDataArr.slice(3).join(' ')),
+                showName: showDataArr[4].split('/').pop().split('?')[0].split('.jpg')[0],
+                airDate: showDataArr.slice(5).join(' ')
             };
             console.log("next-episode, Processed show data: ", showData);
             processedData.push(showData);
@@ -45,15 +46,17 @@ processData: function(data) {
 },
 
 
-    getDom: function() {
-        console.log("next-episode, Creating DOM elements");
-        var wrapper = document.createElement('div');
-        this.shows.forEach((show) => {
-            console.log("next-episode, Creating DOM element for show: ", show.showName, " with air date: ", show.airDate);
-            var showElement = document.createElement('div');
-            showElement.innerHTML = `${show.showName} - ${show.airDate}`;
-            wrapper.appendChild(showElement);
-        });
-        return wrapper;
-    }
+
+getDom: function() {
+    console.log("next-episode, Creating DOM elements");
+    var wrapper = document.createElement('div');
+    this.shows.forEach((show) => {
+        console.log("next-episode, Creating DOM element for show: ", show.showName, " with air date: ", show.airDate);
+        var showElement = document.createElement('div');
+        showElement.innerHTML = `${show.showName} ${show.airDate}`;
+        wrapper.appendChild(showElement);
+    });
+    return wrapper;
+}
+
 });
