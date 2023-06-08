@@ -60,9 +60,9 @@ getDom: function() {
         var showElement = document.createElement('div');
         var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
         if (this.config.displaySeasonAndEpisode) {
-            showElement.innerHTML = `${capitalizedShowName} S${show.season}E${show.episode} ${show.airDate}`;
+            showElement.innerHTML = `${capitalizedShowName}: S${show.season}E${show.episode} ${show.airDate}`;
         } else {
-            showElement.innerHTML = `${capitalizedShowName} ${show.airDate}`;
+            showElement.innerHTML = `${capitalizedShowName}: ${show.airDate}`;
         }
         wrapper.appendChild(showElement);
     });
