@@ -34,6 +34,7 @@ when starting the module the first time without id and hash_key in the config an
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/ab96c625-9836-4840-b313-6e3e3c0f13d7)
 <p></p>
 scan the QR code and you will an empy page. edit the link and replace USERNAME and PASSWORD with your login to get id and hash. they might come together a one line but the first 9 digits are the id and the rest the hash.
+Note: Using special characters such as '+', '"', '^', '%', '$', '#', in your password can cause the link to break. You may consider temporarily changing your password for this purpose.
 
 In MagicMirror/config/config.js
 ```
