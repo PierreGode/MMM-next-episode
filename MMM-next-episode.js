@@ -52,19 +52,20 @@ Module.register('MMM-next-episode', {
         return processedData;
     },
 
-    getDom: function() {
-        console.log("next-episode, Creating DOM elements");
-        var wrapper = document.createElement('div');
-        this.shows.forEach((show) => {
-            console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
-            var showElement = document.createElement('div');
-            if (this.config.displaySeasonAndEpisode) {
-                showElement.innerHTML = `${show.showName} S${show.season}E${show.episode} ${show.airDate}`;
-            } else {
-                showElement.innerHTML = `${show.showName} ${show.airDate}`;
-            }
-            wrapper.appendChild(showElement);
-        });
-        return wrapper;
-    }
+getDom: function() {
+    console.log("next-episode, Creating DOM elements");
+    var wrapper = document.createElement('div');
+    this.shows.forEach((show) => {
+        console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
+        var showElement = document.createElement('div');
+        var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
+        if (this.config.displaySeasonAndEpisode) {
+            showElement.innerHTML = `${capitalizedShowName} S${show.season}E${show.episode} ${show.airDate}`;
+        } else {
+            showElement.innerHTML = `${capitalizedShowName} ${show.airDate}`;
+        }
+        wrapper.appendChild(showElement);
+    });
+    return wrapper;
+}
 });
