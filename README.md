@@ -56,10 +56,11 @@ In MagicMirror/config/config.js
   }
 },
 ```
-
 Config description
+| name | values | info |
+| --- | --- | --- |
+| displaySeasonAndEpisode: | true false | show or hide season or episode. |
+| maxdays: | 300 0  |  Default 7 How many days in the future to show shows from. minimum 0 but will always show Today Tomorrow. |
 
-|displaySeasonAndEpisode:|true|false|show or hide season or episode.
-|maxdays:|300|0| Default 7 How many days in the future to show shows from. minimum 0 but will always show Today Tomorrow.
 
 Big thanks to SANTAH from https://next-episode.net/ for building api support and providing information for this module.
