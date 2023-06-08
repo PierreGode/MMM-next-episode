@@ -11,16 +11,16 @@ Module.register('MMM-next-episode', {
     },
 
     socketNotificationReceived: function(notification, payload) {
-        console.log("Received socket notification: ", notification, " with payload: ", payload);
+        console.log("next-episode, Received socket notification: ", notification, " with payload: ", payload);
         if (notification === 'DATA') {
-            console.log("Received DATA notification with payload: ", payload);
+            console.log("next-episode, Received DATA notification with payload: ", payload);
             this.shows = this.processData(payload);
             this.updateDom();
         }
     },
 
     processData: function(data) {
-        console.log("Processing data: ", data);
+        console.log("next-episode, Processing data: ", data);
         let dataArr = data.trim().split('\n');
         let processedData = [];
         for(let i=0; i<dataArr.length; i++){
@@ -34,21 +34,21 @@ Module.register('MMM-next-episode', {
                     showName: showDataArr[4].split('/')[4].split('?')[0].split('.')[0],
                     airDate: showDataArr.slice(5).join(' '),
                 };
-                console.log("Processed show data: ", showData);
+                console.log("next-episode, Processed show data: ", showData);
                 processedData.push(showData);
             } catch (error) {
-                console.error("Error occurred when processing data: ", error);
+                console.error("next-episode, Error occurred when processing data: ", error);
             }
         }
-        console.log("Final processed data: ", processedData);
+        console.log("next-episode, Final processed data: ", processedData);
         return processedData;
     },
 
     getDom: function() {
-        console.log("Creating DOM elements");
+        console.log("next-episode, Creating DOM elements");
         var wrapper = document.createElement('div');
         this.shows.forEach((show) => {
-            console.log("Creating DOM element for show: ", show.showName, " with air date: ", show.airDate);
+            console.log("next-episode, Creating DOM element for show: ", show.showName, " with air date: ", show.airDate);
             var showElement = document.createElement('div');
             showElement.innerHTML = `${show.showName} - ${show.airDate}`;
             wrapper.appendChild(showElement);
