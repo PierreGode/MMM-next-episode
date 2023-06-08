@@ -68,5 +68,6 @@ please Create tickets or pull request.
 <p></p>
 In development
 <p></p>
-api free, but feel free to support https://next-episode.net/
+API is free, but feel free to support https://next-episode.net/
+<p></p>
 Big thanks to SANTAH from https://next-episode.net/ for building api support and providing information for this module.
