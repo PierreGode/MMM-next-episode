@@ -15,7 +15,12 @@ git clone https://github.com/PierreGode/MMM-next-episode.git
 ```
 In MagicMirror/config/config.js
 ```
-module.exports = {
+
+{
+  module: "MMM-next-episode",
+  position: "bottom_right",
+  header: "Next-Episode",
+  config: {
     id: '',
     hash_key: '',
 },
