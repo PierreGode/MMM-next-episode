@@ -12,7 +12,7 @@ Module.register('MMM-next-episode', {
 
     socketNotificationReceived: function(notification, payload) {
         if (notification === 'DATA') {
-            console.log("Received DATA notification with payload: ", payload);
+            console.log("next-episode, Received DATA notification with payload: ", payload);
             this.shows = this.processData(payload);
             this.updateDom();
         }
@@ -33,15 +33,15 @@ Module.register('MMM-next-episode', {
                 showName: showDataArr[4].split('/')[4].split('?')[0].split('.')[0],
                 airDate: showDataArr.slice(5).join(' '),
             };
-            console.log("Processed show data: ", showData);
+            console.log("next-episode, Processed show data: ", showData);
             processedData.push(showData);
         }
-        console.log("Final processed data: ", processedData);
+        console.log("next-episode, Final processed data: ", processedData);
         return processedData;
     },
 
     getDom: function() {
-        console.log("Creating DOM elements");
+        console.log("next-episode, Creating DOM elements");
         var wrapper = document.createElement('div');
         this.shows.forEach((show) => {
             console.log("Creating DOM element for show: ", show.showName);
