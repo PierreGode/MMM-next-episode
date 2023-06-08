@@ -30,6 +30,20 @@ npm install request
 npm install qrcode
 npm install uuid
 ```
+In MagicMirror/config/config.js
+```
+{
+  module: "MMM-next-episode",
+  position: "bottom_right",
+  header: "Next-Episode",
+  config: {
+    id: '',
+    hash_key: '',
+    displaySeasonAndEpisode: false,
+    maxdays: 7 
+  }
+},
+```
 
 How to get your id and hash_key<p></p> 
 when starting the module the first time without id and hash_key in the config an QR code will be generated<p></p>
@@ -44,7 +58,6 @@ After adding values in  id: '' and hash_key: ''  in the config below, restart th
 
 In MagicMirror/config/config.js
 ```
-
 {
   module: "MMM-next-episode",
   position: "bottom_right",
