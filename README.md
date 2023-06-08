@@ -36,7 +36,8 @@ In MagicMirror/config/config.js
   config: {
     id: '',
     hash_key: '',
-    displaySeasonAndEpisode: true // options: true / false
+    displaySeasonAndEpisode: false,
+    maxdays: 7
   }
 },
 ```
