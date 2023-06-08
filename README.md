@@ -56,20 +56,6 @@ Note: Using special characters such as '+', '"', '^', '%', '$', '#', in your pas
 <p></p>
 After adding values in  id: '' and hash_key: ''  in the config below, restart the magic mirror.
 
-In MagicMirror/config/config.js
-```
-{
-  module: "MMM-next-episode",
-  position: "bottom_right",
-  header: "Next-Episode",
-  config: {
-    id: '',
-    hash_key: '',
-    displaySeasonAndEpisode: false,
-    maxdays: 7 
-  }
-},
-```
 Config description
 | name | values | info |
 | --- | --- | --- |
