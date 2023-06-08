@@ -57,7 +57,7 @@ Module.register('MMM-next-episode', {
         this.shows.forEach((show) => {
             console.log("next-episode, Creating DOM element for show: ", show.showName, " with air date: ", show.airDate);
             var showElement = document.createElement('div');
-            showElement.innerHTML = `${show.showName} ${show.airDate}`;
+            showElement.innerHTML = `${show.showName} S${show.season}E${show.episode} ${show.airDate}`;
             wrapper.appendChild(showElement);
         });
         return wrapper;
