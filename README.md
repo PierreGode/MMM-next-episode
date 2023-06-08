@@ -1,11 +1,22 @@
 # MMM-next-episode
-Magic mirror module for TV shows and movies with next-episode. Track the TV show and movies you watch.
+<p></p>
 
-NEW PROJECT, NOT WORKING.
+<h4>NEW PROJECT, BETA.</H4>
+please Create tickets or pull request.
+
+<p></p>
+Magic mirror module for TV shows and movies with next-episode. <p></p>
+Track the TV show and movies you watch.
+
+![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/38e955a4-a156-4ef8-8b67-6e0b93e0645c)
+![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/08f59252-8a0c-4d29-8d6f-716336204fb3)
+
+
+
 
 How to install:<p></p>
-get your id and hash_key with this link https://next-episode.net/api/magicmirror/v1/services.php?service=link&device_id=FIGURING_THIS_OUT&username=USERNAME&password=PASSWORD
-replace USERNAME and PASSWORD
+
+
 
 ```
 cd MagicMirror/modules
@@ -13,6 +24,23 @@ cd MagicMirror/modules
 ```
 git clone https://github.com/PierreGode/MMM-next-episode.git
 ```
+```
+npm install
+```
+required dependencies
+```
+npm install request
+npm install qrcode
+npm install uuid
+```
+
+How to get your id and hash_key<p></p> 
+when starting the module the first time without id and hash_key in the config an QR code will be generated<p></p>
+![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/ab96c625-9836-4840-b313-6e3e3c0f13d7)
+<p></p>
+Scan the QR code and you will an empy page. edit the link and replace USERNAME and PASSWORD with your login to get id and hash. they might come together a one line but the first 9 digits are the id and the rest the hash.
+Note: Using special characters such as '+', '"', '^', '%', '$', '#', in your password can cause the link to break. You may consider temporarily changing your password for this purpose.
+
 In MagicMirror/config/config.js
 ```
 
@@ -23,6 +51,9 @@ In MagicMirror/config/config.js
   config: {
     id: '',
     hash_key: '',
-   }
+    displaySeasonAndEpisode: false,
+    maxdays: 7
+  }
 },
 ```
+Big thanks to SANTAH from https://next-episode.net/ for building api support and providing information for this module.
