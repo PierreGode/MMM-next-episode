@@ -19,6 +19,10 @@ cd MagicMirror/modules
 ```
 git clone https://github.com/PierreGode/MMM-next-episode.git
 ```
+```
+npm install
+```
+
 In MagicMirror/config/config.js
 ```
 
