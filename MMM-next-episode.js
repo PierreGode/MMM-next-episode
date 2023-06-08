@@ -62,5 +62,5 @@ getDom: function() {
         wrapper.appendChild(showElement);
     });
     return wrapper;
-}
+},
 });
