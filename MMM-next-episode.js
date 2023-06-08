@@ -70,8 +70,10 @@ getDom: function() {
         this.shows.forEach((show) => {
             // Extract number of days from airDate string
             let airDateDays = parseInt(show.airDate.split(' ')[2]);
-            
+            console.log(`next-episode, airDateDays: ${airDateDays}`);  // Log the airDateDays value
+
             // Check if airDateDays is less than or equal to maxdays
+            console.log(`Comparing airDateDays with maxdays: ${airDateDays} <= ${this.config.maxdays}`);  // Log the comparison result
             if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
                 console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
                 var showElement = document.createElement('div');
