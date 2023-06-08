@@ -1,10 +1,5 @@
 # MMM-next-episode
 <p></p>
-
-<h4>NEW PROJECT, BETA.</H4>
-please Create tickets or pull request.
-
-<p></p>
 Magic mirror module for TV shows and movies with next-episode. <p></p>
 Track the TV show and movies you watch.
 
@@ -67,6 +62,8 @@ Config description
 | --- | --- | --- |
 | displaySeasonAndEpisode: | true false | show or hide season and episode. |
 | maxdays: | 300 0  |  Default 7 .  How many days in the future to show shows from. minimum 0 but will always show Today Tomorrow. |
-
-
+<p></p>
+<h4>NEW PROJECT, BETA.</H4>
+please Create tickets or pull request.
+<p></p>
 Big thanks to SANTAH from https://next-episode.net/ for building api support and providing information for this module.
