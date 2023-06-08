@@ -25,22 +25,22 @@ processData: function(data) {
     let processedData = [];
     for(let i=0; i<dataArr.length; i++){
         try {
-            let showDataArr = dataArr[i].trim().split(' ');
-            let urlSegments = showDataArr[4].split('/');
-            let showName = urlSegments[urlSegments.length - 1].split('?')[0].split('.jpg')[0];
-            let airDate = showDataArr.slice(5).join(' ');
-
-            const showData = {
-                id: showDataArr[0],
-                time: showDataArr[1],
-                season: showDataArr[2],
-                episode: showDataArr[3],
-                showName: showName,
-                airDate: airDate
-            };
-
-            console.log("next-episode, Processed show data: ", showData);
-            processedData.push(showData);
+            // Match and extract relevant parts of the line
+            let match = dataArr[i].match(/(\d+) (\d+:\d+) (\d+) (\d+) (https:\/\/[\S]+) (.+)/);
+            if (match) {
+                const showData = {
+                    id: match[1],
+                    time: match[2],
+                    season: match[3],
+                    episode: match[4],
+                    showName: match[5].split('/').pop().split('?')[0].split('.jpg')[0],
+                    airDate: match[6]
+                };
+                console.log("next-episode, Processed show data: ", showData);
+                processedData.push(showData);
+            } else {
+                console.error("next-episode, Error: failed to match line format");
+            }
         } catch (error) {
             console.error("next-episode, Error occurred when processing data: ", error);
         }
@@ -48,7 +48,6 @@ processData: function(data) {
     console.log("next-episode, Final processed data: ", processedData);
     return processedData;
 },
-
 
     getDom: function() {
         console.log("next-episode, Creating DOM elements");
