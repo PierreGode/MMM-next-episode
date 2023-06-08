@@ -49,15 +49,18 @@ processData: function(data) {
     return processedData;
 },
 
-    getDom: function() {
-        console.log("next-episode, Creating DOM elements");
-        var wrapper = document.createElement('div');
-        this.shows.forEach((show) => {
-            console.log("next-episode, Creating DOM element for show: ", show.showName, " with air date: ", show.airDate);
-            var showElement = document.createElement('div');
-            showElement.innerHTML = `${show.showName} - ${show.airDate}`;
-            wrapper.appendChild(showElement);
-        });
-        return wrapper;
-    }
+getDom: function() {
+    console.log("next-episode, Creating DOM elements");
+    var wrapper = document.createElement('div');
+    this.shows.forEach((show) => {
+        console.log("next-episode, Creating DOM element for show: ", show.showName, " with air date: ", show.airDate);
+        var showElement = document.createElement('div');
+        
+        // Modify this line to format the display string as you desire
+        showElement.innerHTML = `${show.showName} ${show.airDate}`;
+        
+        wrapper.appendChild(showElement);
+    });
+    return wrapper;
+}
 });
