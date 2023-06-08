@@ -48,12 +48,12 @@ Module.register('MMM-next-episode', {
     getDom: function() {
         console.log("next-episode, Creating DOM elements");
         var wrapper = document.createElement('div');
-        this.shows.forEach((show) => {
-            console.log("Creating DOM element for show: ", show.showName);
-            var showElement = document.createElement('div');
-            showElement.innerHTML = `<img src="https://static.next-episode.net/tv-shows-images/thumb/${show.icon}" /> ${show.showName} - ${show.airDate}`;
-            wrapper.appendChild(showElement);
-        });
+this.shows.forEach((show) => {
+    console.log("Creating DOM element for show: ", show.showName, " with air date: ", show.airDate);
+    var showElement = document.createElement('div');
+    showElement.innerHTML = `<img src="https://static.next-episode.net/tv-shows-images/thumb/${show.icon}" /> ${show.showName} - ${show.airDate}`;
+    wrapper.appendChild(showElement);
+});
         return wrapper;
     }
 });
