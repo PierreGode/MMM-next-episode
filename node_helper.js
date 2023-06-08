@@ -25,9 +25,13 @@ module.exports = NodeHelper.create({
             var url = `https://next-episode.net/api/magicmirror/v1/services.php?service=link&device_id=${deviceId}&username=USERNAME&password=PASSWORD`;
             // generate QR code
             qrcode.toDataURL(url, function (err, url) {
-                console.log("next-episode, QR Code: ", url);
-                // Send the QR code URL to the frontend so it can be displayed
-                self.sendSocketNotification('QR_CODE', url);
+                if (err) {
+                    console.log("next-episode, Error generating QR Code: ", err);
+                } else {
+                    console.log("next-episode, QR Code: ", url);
+                    // Send the QR code URL to the frontend so it can be displayed
+                    self.sendSocketNotification('QR_CODE', url);
+                }
             });
         } else {
             var url = `https://next-episode.net/api/magicmirror/v1/services.php?service=next&user_id=${config.id}&hash_key=${config.hash_key}`;
