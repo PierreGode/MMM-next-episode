@@ -25,22 +25,17 @@ processData: function(data) {
     let processedData = [];
     for(let i=0; i<dataArr.length; i++){
         try {
-            // Match and extract relevant parts of the line
-            let match = dataArr[i].match(/(\d+) (\d+:\d+) (\d+) (\d+) (https:\/\/[\S]+) (.+)/);
-            if (match) {
-                const showData = {
-                    id: match[1],
-                    time: match[2],
-                    season: match[3],
-                    episode: match[4],
-                    showName: match[5].split('/').pop().split('?')[0].split('.jpg')[0],
-                    airDate: match[6]
-                };
-                console.log("next-episode, Processed show data: ", showData);
-                processedData.push(showData);
-            } else {
-                console.error("next-episode, Error: failed to match line format");
-            }
+            let showDataArr = dataArr[i].trim().split(' ');
+            const showData = {
+                id: showDataArr[0],
+                time: showDataArr[1],
+                season: showDataArr[2],
+                episode: showDataArr[3],
+                showName: showDataArr[4].split('/').pop().split('?')[0].split('.jpg')[0],
+                airDate: (showDataArr.slice(5).join(' ').includes('in') ? showDataArr.slice(5).join(' ') : showDataArr.slice(5).join(' ')),
+            };
+            console.log("next-episode, Processed show data: ", showData);
+            processedData.push(showData);
         } catch (error) {
             console.error("next-episode, Error occurred when processing data: ", error);
         }
@@ -49,18 +44,16 @@ processData: function(data) {
     return processedData;
 },
 
-getDom: function() {
-    console.log("next-episode, Creating DOM elements");
-    var wrapper = document.createElement('div');
-    this.shows.forEach((show) => {
-        console.log("next-episode, Creating DOM element for show: ", show.showName, " with air date: ", show.airDate);
-        var showElement = document.createElement('div');
-        
-        // Modify this line to format the display string as you desire
-        showElement.innerHTML = `${show.showName} ${show.airDate}`;
-        
-        wrapper.appendChild(showElement);
-    });
-    return wrapper;
-},
+
+    getDom: function() {
+        console.log("next-episode, Creating DOM elements");
+        var wrapper = document.createElement('div');
+        this.shows.forEach((show) => {
+            console.log("next-episode, Creating DOM element for show: ", show.showName, " with air date: ", show.airDate);
+            var showElement = document.createElement('div');
+            showElement.innerHTML = `${show.showName} - ${show.airDate}`;
+            wrapper.appendChild(showElement);
+        });
+        return wrapper;
+    }
 });
