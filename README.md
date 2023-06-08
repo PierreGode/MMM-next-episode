@@ -2,7 +2,7 @@
 <p></p>
 
 <h4>NEW PROJECT, BETA.</H4>
-please crete tickets or pull request.
+please Create tickets or pull request.
 
 <p></p>
 Magic mirror module for TV shows and movies with next-episode. Track the TV show and movies you watch.
