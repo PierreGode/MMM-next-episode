@@ -18,6 +18,7 @@ Module.register('MMM-next-episode', {
             this.updateDom();
         }
     },
+    
 processData: function(data) {
     console.log("next-episode, Processing data: ", data);
     let dataArr = data.trim().split('\n');
@@ -31,7 +32,7 @@ processData: function(data) {
                 season: showDataArr[2],
                 episode: showDataArr[3],
                 showName: showDataArr[4].split('/').pop().split('?')[0].split('.jpg')[0],
-                airDate: (showDataArr.slice(5).join(' ').includes('in') ? showDataArr.slice(5).join(' ') : showDataArr.slice(5).join(' ') + " in 1 day"),
+                airDate: (showDataArr.slice(5).join(' ').includes('in') ? showDataArr.slice(5).join(' ') : showDataArr.slice(5).join(' ')),
             };
             console.log("next-episode, Processed show data: ", showData);
             processedData.push(showData);
