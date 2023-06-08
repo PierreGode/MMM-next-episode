@@ -10,13 +10,15 @@ Module.register('MMM-next-episode', {
         this.sendSocketNotification('GET_DATA', this.config);
     },
 
-    socketNotificationReceived: function(notification, payload) {
-        if (notification === 'DATA') {
-            console.log("Received DATA notification with payload: ", payload);
-            this.shows = this.processData(payload);
-            this.updateDom();
-        }
-    },
+socketNotificationReceived: function(notification, payload) {
+    console.log("next-episode, Received socket notification: ", notification, " with payload: ", payload);
+    if (notification === 'DATA') {
+        console.log("next-episode, Received DATA notification with payload: ", payload);
+        this.shows = this.processData(payload);
+        this.updateDom();
+    }
+},
+
 
     processData: function(data) {
         console.log("Processing data: ", data);
