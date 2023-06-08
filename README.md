@@ -56,7 +56,7 @@ Note: Using special characters such as '+', '"', '^', '%', '$', '#', in your pas
 <p></p>
 After adding values in  id: '' and hash_key: ''  in the config below, restart the magic mirror.
 
-##Config description
+## Config description
 | name | values | info |
 | --- | --- | --- |
 | `displaySeasonAndEpisode:` | true false | show or hide season and episode. |
