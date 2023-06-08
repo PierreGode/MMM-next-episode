@@ -18,25 +18,27 @@ Module.register('MMM-next-episode', {
         }
     },
 
-    processData: function(data) {
-        console.log("Processing data: ", data);
-        let dataArr = data.trim().split(' ');
-        let processedData = [];
-        for(let i=0; i<dataArr.length; i+=7){
-            const showData = {
-                id: dataArr[i],
-                time: dataArr[i+1],
-                season: dataArr[i+2],
-                episode: dataArr[i+3],
-                icon: dataArr[i+4].split('/')[2],
-                showName: dataArr[i+4].split('/')[2].split('.')[0],
-                airDate: dataArr[i+5] + ' ' + (dataArr[i+6] || ''),
-            };
-            console.log("Processed show data: ", showData);
-            processedData.push(showData);
-        }
-        return processedData;
-    },
+processData: function(data) {
+    console.log("Processing data: ", data);
+    let dataArr = data.trim().split('\n');
+    let processedData = [];
+    for(let i=0; i<dataArr.length; i++){
+        let showDataArr = dataArr[i].trim().split(' ');
+        const showData = {
+            id: showDataArr[0],
+            time: showDataArr[1],
+            season: showDataArr[2],
+            episode: showDataArr[3],
+            icon: showDataArr[4].split('/')[4].split('?')[0],
+            showName: showDataArr[4].split('/')[4].split('?')[0].split('.')[0],
+            airDate: showDataArr.slice(5).join(' '),
+        };
+        console.log("Processed show data: ", showData);
+        processedData.push(showData);
+    }
+    return processedData;
+},
+
 
     getDom: function() {
         var wrapper = document.createElement('div');
