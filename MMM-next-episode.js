@@ -5,22 +5,22 @@ Module.register('MMM-next-episode', {
     },
 
     start: function() {
-        console.log("MMM-next-episode started in main module!");
+        console.log("MMM-next-episode started!");
         this.shows = [];
         this.sendSocketNotification('GET_DATA', this.config);
     },
 
     socketNotificationReceived: function(notification, payload) {
-        console.log("next-episode, Received socket notification in main module: ", notification, " with payload: ", payload);
+        console.log("Received socket notification: ", notification, " with payload: ", payload);
         if (notification === 'DATA') {
-            console.log("next-episode, Received DATA notification with payload in main module: ", payload);
+            console.log("Received DATA notification with payload: ", payload);
             this.shows = this.processData(payload);
             this.updateDom();
         }
     },
 
     processData: function(data) {
-        console.log("next-episode, Processing data in main module: ", data);
+        console.log("Processing data: ", data);
         let dataArr = data.trim().split('\n');
         let processedData = [];
         for(let i=0; i<dataArr.length; i++){
@@ -31,27 +31,26 @@ Module.register('MMM-next-episode', {
                     time: showDataArr[1],
                     season: showDataArr[2],
                     episode: showDataArr[3],
-                    icon: showDataArr[4].split('/')[4].split('?')[0],
                     showName: showDataArr[4].split('/')[4].split('?')[0].split('.')[0],
                     airDate: showDataArr.slice(5).join(' '),
                 };
-                console.log("next-episode, Processed show data in main module: ", showData);
+                console.log("Processed show data: ", showData);
                 processedData.push(showData);
             } catch (error) {
-                console.error("next-episode, Error occurred when processing data in main module: ", error);
+                console.error("Error occurred when processing data: ", error);
             }
         }
-        console.log("next-episode, Final processed data in main module: ", processedData);
+        console.log("Final processed data: ", processedData);
         return processedData;
     },
 
     getDom: function() {
-        console.log("next-episode, Creating DOM elements in main module");
+        console.log("Creating DOM elements");
         var wrapper = document.createElement('div');
         this.shows.forEach((show) => {
-            console.log("next-episode, Creating DOM element for show: ", show.showName, " with air date: ", show.airDate);
+            console.log("Creating DOM element for show: ", show.showName, " with air date: ", show.airDate);
             var showElement = document.createElement('div');
-            showElement.innerHTML = `<img src="https://static.next-episode.net/tv-shows-images/thumb/${show.icon}" /> ${show.showName} - ${show.airDate}`;
+            showElement.innerHTML = `${show.showName} - ${show.airDate}`;
             wrapper.appendChild(showElement);
         });
         return wrapper;
