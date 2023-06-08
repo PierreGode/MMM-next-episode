@@ -26,14 +26,19 @@ processData: function(data) {
     for(let i=0; i<dataArr.length; i++){
         try {
             let showDataArr = dataArr[i].trim().split(' ');
+            let urlSegments = showDataArr[4].split('/');
+            let showName = urlSegments[urlSegments.length - 1].split('?')[0].split('.jpg')[0];
+            let airDate = showDataArr.slice(5).join(' ');
+
             const showData = {
                 id: showDataArr[0],
                 time: showDataArr[1],
                 season: showDataArr[2],
                 episode: showDataArr[3],
-                showName: showDataArr[4].split('/').pop().split('?')[0].split('.jpg')[0],
-                airDate: (showDataArr.slice(5).join(' ').includes('in') ? showDataArr.slice(5).join(' ') : showDataArr.slice(5).join(' ')),
+                showName: showName,
+                airDate: airDate
             };
+
             console.log("next-episode, Processed show data: ", showData);
             processedData.push(showData);
         } catch (error) {
