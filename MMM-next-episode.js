@@ -1,7 +1,12 @@
 Module.register('MMM-next-episode', {
+    defaults: {
+        id: '',
+        hash_key: ''
+    },
+
     start: function() {
         this.shows = [];
-        this.sendSocketNotification('GET_DATA');
+        this.sendSocketNotification('GET_DATA', this.config);
     },
 
     socketNotificationReceived: function(notification, payload) {
