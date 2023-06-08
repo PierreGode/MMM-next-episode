@@ -20,37 +20,47 @@ Module.register('MMM-next-episode', {
         }
     },
 
-    processData: function(data) {
-        console.log("next-episode, Processing data: ", data);
-    
-        // Parse the XML data
-        let parser = new DOMParser();
-        let xmlDoc = parser.parseFromString(data, "text/xml");
+processData: function(data) {
+    console.log("next-episode, Processing data: ", data);
 
-        let processedData = [];
+    // Parse the XML data
+    let parser = new DOMParser();
+    let xmlDoc = parser.parseFromString(data, "text/xml");
 
-        // Get all the result elements
-        let results = xmlDoc.getElementsByTagName('result');
-        for(let i=0; i<results.length; i++){
-            try {
-                const result = results[i];
+    let processedData = [];
+
+    // Get all the result elements
+    let results = xmlDoc.getElementsByTagName('result');
+    for(let i=0; i<results.length; i++){
+        try {
+            const result = results[i];
+            const airDateStr = result.getElementsByTagName('countdown')[0].textContent
+            const airDate = new Date(airDateStr);
+
+            // Compute the current date plus maxdays
+            const maxDate = new Date();
+            maxDate.setDate(maxDate.getDate() + this.config.maxdays);
+
+            // If the air date is within the range, add it to processedData
+            if (airDate <= maxDate) {
                 const showData = {
                     id: result.getElementsByTagName('showid')[0].textContent,
                     time: result.getElementsByTagName('hour')[0].textContent,
                     season: result.getElementsByTagName('seasonNumber')[0].textContent,
                     episode: result.getElementsByTagName('episodeNumber')[0].textContent,
                     showName: result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', ''),
-                    airDate: result.getElementsByTagName('countdown')[0].textContent
+                    airDate: airDateStr
                 };
                 console.log("next-episode, Processed show data: ", showData);
                 processedData.push(showData);
-            } catch (error) {
-                console.error("next-episode, Error occurred when processing data: ", error);
             }
+        } catch (error) {
+            console.error("next-episode, Error occurred when processing data: ", error);
         }
-        console.log("next-episode, Final processed data: ", processedData);
-        return processedData;
-    },
+    }
+    console.log("next-episode, Final processed data: ", processedData);
+    return processedData;
+},
 
 getDom: function() {
     console.log("next-episode, Creating DOM elements");
