@@ -38,7 +38,7 @@ npm install uuid
 
 How to get your id and hash_key<p></p> 
 when starting the module the first time without id and hash_key in the config an QR code will be generated<p></p>
-![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/ab96c625-9836-4840-b313-6e3e3c0f13d7)
+![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/13bde541-fe3a-45cf-a01b-47430a80a7c8)
 <p></p>
 Scan the QR code and a empy page will show. <h4>NOTE! Edit the link and replace USERNAME and PASSWORD</h4> with your login to get id and hash. they might come together a one line but the first 9 digits are the id and the rest the hash.
 Note: Using special characters such as '+', '"', '^', '%', '$', '#', in your password can cause the link to break. You may consider temporarily changing your password for this purpose.
