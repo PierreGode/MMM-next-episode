@@ -23,6 +23,7 @@ In MagicMirror/config/config.js
   config: {
     id: '',
     hash_key: '',
-   }
+    displaySeasonAndEpisode: true
+  }
 },
 ```
