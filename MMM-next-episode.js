@@ -29,7 +29,7 @@ processData: function(data) {
             const showData = {
                 id: showDataArr[0],
                 time: showDataArr[1],
-                season: showDataArr[2],
+                season: showDataArr[1],
                 episode: showDataArr[3],
                 showName: showDataArr[4].split('/').pop().split('?')[0].split('.jpg')[0],
                 airDate: (showDataArr.slice(3).join(' ').includes('in') ? showDataArr.slice(3).join(' ') : showDataArr.slice(3).join(' ')),
