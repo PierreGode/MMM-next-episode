@@ -51,8 +51,8 @@ In MagicMirror/config/config.js
   config: {
     id: '',
     hash_key: '',
-    displaySeasonAndEpisode: false,
-    maxdays: 7
+    displaySeasonAndEpisode: false, // show or hire season or episode.
+    maxdays: 7 // How many days in the future to show shows from. minimum 0 but will always show Today Tomorrow.
   }
 },
 ```
