@@ -19,11 +19,11 @@ module.exports = NodeHelper.create({
         console.log("Requesting data from: ", url);
         request({ url: url, method: 'GET' }, function(error, response, body) {
             if (!error && response.statusCode == 200) {
-                console.log("Successfully received data from the API");
+                console.log("next-episode, Successfully received data from the API");
                 self.sendSocketNotification('DATA', body);
             } else {
-                console.error("Error in getData: ", error);
-                console.log("Response status code: ", response && response.statusCode);
+                console.error("next-episode, Error in getData: ", error);
+                console.log("next-episode, Response status code: ", response && response.statusCode);
             }
         });
     }
