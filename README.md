@@ -40,3 +40,4 @@ In MagicMirror/config/config.js
   }
 },
 ```
+Big thanks to SANTAH from https://next-episode.net/ for building api support and providing information for this module.
