@@ -9,7 +9,7 @@ replace USERNAME and PASSWORD
 cd MagicMirror/modules
 ```
 ```
-git clone https://github.com/PierreGode/MMM-ICA.git
+git clone https://github.com/PierreGode/MMM-next-episode.git
 ```
 In MagicMirror/config/config.js
 ```
