@@ -57,17 +57,25 @@ Module.register('MMM-next-episode', {
         return processedData;
     },
 
-    getDom: function() {
-        console.log("next-episode, Creating DOM elements");
-        var wrapper = document.createElement('div');
+getDom: function() {
+    console.log("next-episode, Creating DOM elements");
+    var wrapper = document.createElement('div');
 
-        // if QR code is available, display it
-        if (this.qrCode) {
-            var img = document.createElement('img');
-            img.src = this.qrCode;
-            wrapper.appendChild(img);
-        } else {
-            this.shows.forEach((show) => {
+    // if QR code is available, display it
+    if (this.qrCode) {
+        var img = document.createElement('img');
+        img.src = this.qrCode;
+        wrapper.appendChild(img);
+    } else {
+        this.shows.forEach((show) => {
+            // Extract number of days from airDate string
+            let airDateDays = parseInt(show.airDate.split(' ').filter(word => !isNaN(word))[0]);
+
+            console.log(`next-episode, airDateDays: ${airDateDays}`);  // Log the airDateDays value
+
+            // Check if airDateDays is less than or equal to maxdays
+            console.log(`Comparing airDateDays with maxdays: ${airDateDays} <= ${this.config.maxdays}`);  // Log the comparison result
+            if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
                 console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
                 var showElement = document.createElement('div');
                 var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
@@ -77,8 +85,9 @@ Module.register('MMM-next-episode', {
                     showElement.innerHTML = `${capitalizedShowName}: ${show.airDate}`;
                 }
                 wrapper.appendChild(showElement);
-            });
-        }
-        return wrapper;
+            }
+        });
     }
+    return wrapper;
+}
 });
