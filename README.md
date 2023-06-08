@@ -10,11 +10,8 @@ Magic mirror module for TV shows and movies with next-episode. Track the TV show
 NEW PROJECT, NOT WORKING.
 
 How to install:<p></p>
-Get your id and hash_key with this link 
-<p></p>
-https://next-episode.net/api/magicmirror/v1/services.php?service=link&device_id=FIGURING_THIS_OUT&username=USERNAME&password=PASSWORD
-<p></p>
-replace USERNAME and PASSWORD
+
+
 
 ```
 cd MagicMirror/modules
@@ -32,6 +29,11 @@ npm install qrcode
 npm install uuid
 ```
 
+How to et your id and hash_key 
+when starting the module the first time without id and hash_key in the config an QR code will be generated
+![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/ab96c625-9836-4840-b313-6e3e3c0f13d7)
+
+scan the QR code and you will an empy page. edit the link and replace USERNAME and PASSWORD with your login to get id and hash. they might come together a one line but the first 9 digits are the id and the rest the hash.
 
 In MagicMirror/config/config.js
 ```
