@@ -8,6 +8,7 @@ Module.register('MMM-next-episode', {
     start: function() {
         console.log("MMM-next-episode started!");
         this.shows = [];
+        this.qrCode = null; // added to hold QR code
         this.sendSocketNotification('GET_DATA', this.config);
     },
 
@@ -17,12 +18,16 @@ Module.register('MMM-next-episode', {
             console.log("next-episode, Received DATA notification with payload: ", payload);
             this.shows = this.processData(payload);
             this.updateDom();
+        } else if (notification === 'QR_CODE') {  // handle QR_CODE notification
+            console.log("next-episode, Received QR_CODE notification with payload: ", payload);
+            this.qrCode = payload;
+            this.updateDom();
         }
     },
 
     processData: function(data) {
         console.log("next-episode, Processing data: ", data);
-    
+
         // Parse the XML data
         let parser = new DOMParser();
         let xmlDoc = parser.parseFromString(data, "text/xml");
@@ -52,41 +57,28 @@ Module.register('MMM-next-episode', {
         return processedData;
     },
 
-socketNotificationReceived: function(notification, payload) {
-    console.log("next-episode, Received socket notification: ", notification, " with payload: ", payload);
-    if (notification === 'DATA') {
-        console.log("next-episode, Received DATA notification with payload: ", payload);
-        this.shows = this.processData(payload);
-        this.updateDom();
-    } else if (notification === 'QR_CODE') {  // handle QR_CODE notification
-        console.log("next-episode, Received QR_CODE notification with payload: ", payload);
-        this.qrCode = payload;
-        this.updateDom();
-    }
-},
+    getDom: function() {
+        console.log("next-episode, Creating DOM elements");
+        var wrapper = document.createElement('div');
 
-getDom: function() {
-    console.log("next-episode, Creating DOM elements");
-    var wrapper = document.createElement('div');
-
-    // if QR code is available, display it
-    if (this.qrCode) {
-        var img = document.createElement('img');
-        img.src = this.qrCode;
-        wrapper.appendChild(img);
-    } else {
-        this.shows.forEach((show) => {
-            console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
-            var showElement = document.createElement('div');
-            var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
-            if (this.config.displaySeasonAndEpisode) {
-                showElement.innerHTML = `${capitalizedShowName}: S${show.season}E${show.episode} ${show.airDate}`;
-            } else {
-                showElement.innerHTML = `${capitalizedShowName}: ${show.airDate}`;
-            }
-            wrapper.appendChild(showElement);
-        });
+        // if QR code is available, display it
+        if (this.qrCode) {
+            var img = document.createElement('img');
+            img.src = this.qrCode;
+            wrapper.appendChild(img);
+        } else {
+            this.shows.forEach((show) => {
+                console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
+                var showElement = document.createElement('div');
+                var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
+                if (this.config.displaySeasonAndEpisode) {
+                    showElement.innerHTML = `${capitalizedShowName}: S${show.season}E${show.episode} ${show.airDate}`;
+                } else {
+                    showElement.innerHTML = `${capitalizedShowName}: ${show.airDate}`;
+                }
+                wrapper.appendChild(showElement);
+            });
+        }
+        return wrapper;
     }
-    return wrapper;
-}
 });
