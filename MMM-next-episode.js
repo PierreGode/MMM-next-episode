@@ -11,16 +11,16 @@ Module.register('MMM-next-episode', {
     },
 
     socketNotificationReceived: function(notification, payload) {
-        console.log("Received socket notification: ", notification, " with payload: ", payload);
+        console.log("next-episode, Received socket notification: ", notification, " with payload: ", payload);
         if (notification === 'DATA') {
-            console.log("next-episode, Received DATA notification with payload: ", payload);
+            console.log("next-episode, next-episode, Received DATA notification with payload: ", payload);
             this.shows = this.processData(payload);
             this.updateDom();
         }
     },
 
     processData: function(data) {
-        console.log("Processing data: ", data);
+        console.log("next-episode, Processing data: ", data);
         let dataArr = data.trim().split('\n');
         let processedData = [];
         for(let i=0; i<dataArr.length; i++){
@@ -38,7 +38,7 @@ Module.register('MMM-next-episode', {
                 console.log("next-episode, Processed show data: ", showData);
                 processedData.push(showData);
             } catch (error) {
-                console.error("Error occurred when processing data: ", error);
+                console.error("next-episode, Error occurred when processing data: ", error);
             }
         }
         console.log("next-episode, Final processed data: ", processedData);
