@@ -29,7 +29,7 @@ npm install qrcode
 npm install uuid
 ```
 
-How to et your id and hash_key 
+How to get your id and hash_key 
 when starting the module the first time without id and hash_key in the config an QR code will be generated
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/ab96c625-9836-4840-b313-6e3e3c0f13d7)
 
