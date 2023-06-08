@@ -10,7 +10,10 @@ Magic mirror module for TV shows and movies with next-episode. Track the TV show
 NEW PROJECT, NOT WORKING.
 
 How to install:<p></p>
-get your id and hash_key with this link https://next-episode.net/api/magicmirror/v1/services.php?service=link&device_id=FIGURING_THIS_OUT&username=USERNAME&password=PASSWORD
+Get your id and hash_key with this link 
+<p></p>
+https://next-episode.net/api/magicmirror/v1/services.php?service=link&device_id=FIGURING_THIS_OUT&username=USERNAME&password=PASSWORD
+<p></p>
 replace USERNAME and PASSWORD
 
 ```
