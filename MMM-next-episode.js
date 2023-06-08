@@ -11,6 +11,7 @@ Module.register('MMM-next-episode', {
     },
 
     socketNotificationReceived: function(notification, payload) {
+        console.log("Received socket notification: ", notification, " with payload: ", payload);
         if (notification === 'DATA') {
             console.log("next-episode, Received DATA notification with payload: ", payload);
             this.shows = this.processData(payload);
@@ -23,18 +24,22 @@ Module.register('MMM-next-episode', {
         let dataArr = data.trim().split('\n');
         let processedData = [];
         for(let i=0; i<dataArr.length; i++){
-            let showDataArr = dataArr[i].trim().split(' ');
-            const showData = {
-                id: showDataArr[0],
-                time: showDataArr[1],
-                season: showDataArr[2],
-                episode: showDataArr[3],
-                icon: showDataArr[4].split('/')[4].split('?')[0],
-                showName: showDataArr[4].split('/')[4].split('?')[0].split('.')[0],
-                airDate: showDataArr.slice(5).join(' '),
-            };
-            console.log("next-episode, Processed show data: ", showData);
-            processedData.push(showData);
+            try {
+                let showDataArr = dataArr[i].trim().split(' ');
+                const showData = {
+                    id: showDataArr[0],
+                    time: showDataArr[1],
+                    season: showDataArr[2],
+                    episode: showDataArr[3],
+                    icon: showDataArr[4].split('/')[4].split('?')[0],
+                    showName: showDataArr[4].split('/')[4].split('?')[0].split('.')[0],
+                    airDate: showDataArr.slice(5).join(' '),
+                };
+                console.log("next-episode, Processed show data: ", showData);
+                processedData.push(showData);
+            } catch (error) {
+                console.error("Error occurred when processing data: ", error);
+            }
         }
         console.log("next-episode, Final processed data: ", processedData);
         return processedData;
