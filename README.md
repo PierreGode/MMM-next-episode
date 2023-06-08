@@ -1,4 +1,10 @@
 # MMM-next-episode
+<p></p>
+
+<h4>NEW PROJECT, BETA.</H4>
+please crete tickets or pull request.
+
+<p></p>
 Magic mirror module for TV shows and movies with next-episode. Track the TV show and movies you watch.
 
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/38e955a4-a156-4ef8-8b67-6e0b93e0645c)
@@ -6,8 +12,6 @@ Magic mirror module for TV shows and movies with next-episode. Track the TV show
 
 
 
-
-NEW PROJECT, NOT WORKING.
 
 How to install:<p></p>
 
