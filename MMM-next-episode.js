@@ -53,27 +53,27 @@ Module.register('MMM-next-episode', {
     return processedData;
   },
 
-  getDom: function() {
-    console.log("next-episode, Creating DOM elements");
-    var wrapper = document.createElement('div');
-    var currentDate = new Date(); // Get the current date
-    this.shows.forEach((show) => {
-      console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
-      var showDate = new Date(show.airDate); // Convert airDate to a Date object
-      var daysDiff = Math.floor((showDate - currentDate) / (1000 * 60 * 60 * 24)); // Calculate the difference in days
+getDom: function() {
+  console.log("next-episode, Creating DOM elements");
+  var wrapper = document.createElement('div');
+  var currentDate = new Date(); // Get the current date
+  this.shows.forEach((show) => {
+    console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
+    var showDate = new Date(show.airDate); // Convert airDate to a Date object
+    var daysDiff = Math.floor((showDate - currentDate) / (1000 * 60 * 60 * 24)); // Calculate the difference in days
 
-      // Check if daysDiff is less than or equal to maxdays
-      if (daysDiff <= this.config.maxdays) {
-        var showElement = document.createElement('div');
-        var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
-        if (this.config.displaySeasonAndEpisode) {
-          showElement.innerHTML = `${capitalizedShowName}: S${show.season}E${show.episode} ${show.airDate}`;
-        } else {
-          showElement.innerHTML = `${capitalizedShowName}: ${show.airDate}`;
-        }
-        wrapper.appendChild(showElement);
+    // Check if daysDiff is less than or equal to maxdays, and show.airDate is not empty
+    if (daysDiff <= this.config.maxdays && show.airDate !== '') {
+      var showElement = document.createElement('div');
+      var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
+      if (this.config.displaySeasonAndEpisode) {
+        showElement.innerHTML = `${capitalizedShowName}: S${show.season}E${show.episode} ${show.airDate}`;
+      } else {
+        showElement.innerHTML = `${capitalizedShowName}: ${show.airDate}`;
       }
-    });
-    return wrapper;
-  }
+      wrapper.appendChild(showElement);
+    }
+  });
+  return wrapper;
+}
 });
