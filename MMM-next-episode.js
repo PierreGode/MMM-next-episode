@@ -18,31 +18,31 @@ Module.register('MMM-next-episode', {
             this.updateDom();
         }
     },
-
-    processData: function(data) {
-        console.log("next-episode, Processing data: ", data);
-        let dataArr = data.trim().split('\n');
-        let processedData = [];
-        for(let i=0; i<dataArr.length; i++){
-            try {
-                let showDataArr = dataArr[i].trim().split(' ');
-                const showData = {
-                    id: showDataArr[0],
-                    time: showDataArr[1],
-                    season: showDataArr[2],
-                    episode: showDataArr[3],
-                    showName: showDataArr[4].split('/')[4].split('?')[0].split('.')[0],
-                    airDate: showDataArr.slice(5).join(' '),
-                };
-                console.log("next-episode, Processed show data: ", showData);
-                processedData.push(showData);
-            } catch (error) {
-                console.error("next-episode, Error occurred when processing data: ", error);
-            }
+processData: function(data) {
+    console.log("next-episode, Processing data: ", data);
+    let dataArr = data.trim().split('\n');
+    let processedData = [];
+    for(let i=0; i<dataArr.length; i++){
+        try {
+            let showDataArr = dataArr[i].trim().split(' ');
+            const showData = {
+                id: showDataArr[0],
+                time: showDataArr[1],
+                season: showDataArr[2],
+                episode: showDataArr[3],
+                showName: showDataArr[4].split('/').pop().split('?')[0].split('.jpg')[0],
+                airDate: (showDataArr.slice(5).join(' ').includes('in') ? showDataArr.slice(5).join(' ') : showDataArr.slice(5).join(' ') + " in 1 day"),
+            };
+            console.log("next-episode, Processed show data: ", showData);
+            processedData.push(showData);
+        } catch (error) {
+            console.error("next-episode, Error occurred when processing data: ", error);
         }
-        console.log("next-episode, Final processed data: ", processedData);
-        return processedData;
-    },
+    }
+    console.log("next-episode, Final processed data: ", processedData);
+    return processedData;
+},
+
 
     getDom: function() {
         console.log("next-episode, Creating DOM elements");
