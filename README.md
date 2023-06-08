@@ -1,8 +1,8 @@
 # MMM-next-episode
 Magic mirror module for TV shows and movies with next-episode. Track the TV show and movies you watch.
 
-![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/2068e6ba-579a-44aa-8c66-27d77275ab6e)
-![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/42a303f1-5998-42f9-93a5-653f55819eab)
+![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/76f66a5c-de00-4c96-9d25-394134ab00a4)
+![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/3d64fe49-de97-4672-b760-865f6e0db14e)
 
 
 
@@ -28,7 +28,7 @@ In MagicMirror/config/config.js
   config: {
     id: '',
     hash_key: '',
-    displaySeasonAndEpisode: true
+    displaySeasonAndEpisode: true // options: true / false
   }
 },
 ```
