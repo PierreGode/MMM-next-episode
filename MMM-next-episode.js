@@ -63,7 +63,7 @@ getDom: function() {
     var daysDiff = Math.floor((showDate - currentDate) / (1000 * 60 * 60 * 24)); // Calculate the difference in days
 
     // Check if daysDiff is less than or equal to maxdays, and show.airDate is not empty
-    if (daysDiff <= this.config.maxdays && show.airDate !== '') {
+    if ((daysDiff <= this.config.maxdays || show.airDate === 'Today' || show.airDate === 'Tomorrow') && show.airDate !== '') {
       var showElement = document.createElement('div');
       var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
       if (this.config.displaySeasonAndEpisode) {
@@ -73,6 +73,9 @@ getDom: function() {
       }
       wrapper.appendChild(showElement);
     }
+  });
+  return wrapper;
+}
   });
   return wrapper;
 }
