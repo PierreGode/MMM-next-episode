@@ -1,7 +1,8 @@
 Module.register('MMM-next-episode', {
     defaults: {
         id: '',
-        hash_key: ''
+        hash_key: '',
+        displaySeasonAndEpisode: false
     },
 
     start: function() {
@@ -55,9 +56,13 @@ Module.register('MMM-next-episode', {
         console.log("next-episode, Creating DOM elements");
         var wrapper = document.createElement('div');
         this.shows.forEach((show) => {
-            console.log("next-episode, Creating DOM element for show: ", show.showName, " with air date: ", show.airDate);
+            console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
             var showElement = document.createElement('div');
-            showElement.innerHTML = `${show.showName} S${show.season}E${show.episode} ${show.airDate}`;
+            if (this.config.displaySeasonAndEpisode) {
+                showElement.innerHTML = `${show.showName} S${show.season}E${show.episode} ${show.airDate}`;
+            } else {
+                showElement.innerHTML = `${show.showName} ${show.airDate}`;
+            }
             wrapper.appendChild(showElement);
         });
         return wrapper;
