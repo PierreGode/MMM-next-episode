@@ -66,4 +66,6 @@ Config description
 <h4>NEW PROJECT, BETA.</H4>
 please Create tickets or pull request.
 <p></p>
+In development
+<p></p>
 Big thanks to SANTAH from https://next-episode.net/ for building api support and providing information for this module.
