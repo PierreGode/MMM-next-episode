@@ -46,7 +46,7 @@ In MagicMirror/config/config.js
 ```
 
 <h4>How to get your id and hash_key</h4> <p></p> 
-when starting the module the first time without id and hash_key in the config an QR code will be generated<p></p>
+When starting the module the first time without id and hash_key in the config a QR code will be displayed on the mirror<p></p>
 
 Example:<p></p>
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/4680580b-c497-4a8e-8c04-37b3d62852b7)
