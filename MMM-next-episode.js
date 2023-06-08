@@ -69,7 +69,8 @@ getDom: function() {
     } else {
         this.shows.forEach((show) => {
             // Extract number of days from airDate string
-            let airDateDays = parseInt(show.airDate.split(' ')[2]);
+            let airDateDays = parseInt(show.airDate.split(' ').filter(word => !isNaN(word))[0]);
+
             console.log(`next-episode, airDateDays: ${airDateDays}`);  // Log the airDateDays value
 
             // Check if airDateDays is less than or equal to maxdays
