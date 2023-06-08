@@ -1,6 +1,6 @@
 var NodeHelper = require('node_helper');
 var request = require('request');
-var qrcode = require('qrcode');  // Import the qrcode library
+//var qrcode = require('qrcode');  // Import the qrcode library
 var uuidv4 = require('uuid').v4; // Import the uuid library
 
 module.exports = NodeHelper.create({
