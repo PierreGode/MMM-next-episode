@@ -27,11 +27,14 @@ module.exports = NodeHelper.create({
                 clearInterval(this.timer);
             }
 
+            // Enforce minimum update interval of 180 minutes
+            var updateInterval = payload.updateInterval < 180 ? 180 : payload.updateInterval;
+
             // Set interval to fetch data as per the configuration
             var self = this;
             this.timer = setInterval(function() {
                 self.getData(payload);
-            }, payload.updateInterval * 60 * 1000); // updateInterval in minutes
+            }, updateInterval * 60 * 1000); // updateInterval in minutes
         }
     },
 
