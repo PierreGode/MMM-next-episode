@@ -50,7 +50,7 @@ In MagicMirror/config/config.js
     maxdays: 7,
     ShowThumbnail: true,
     ThumbnailSize: 'small',
-    updateInterval: 60
+    updateInterval: 180
 },
 ```
 
