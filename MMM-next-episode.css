@@ -2,7 +2,7 @@
 
 .MMM-next-episode .show-element {
     display: flex;
-    align-items: flex-start; /* Align items vertically at the top */
+    align-items: center;
     margin-bottom: 10px;
 }
 
@@ -11,20 +11,17 @@
 }
 
 .MMM-next-episode .show-details {
+    flex-grow: 1;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.MMM-next-episode .show-details .show-name {
+.MMM-next-episode .show-name {
     font-weight: bold;
 }
 
-.MMM-next-episode .show-details .show-episode {
-    margin-bottom: 5px;
-}
-
 .MMM-next-episode .show-airdate {
-    margin-left: 200px;
+    margin-left: 10px;
     text-align: right;
 }
