@@ -10,7 +10,13 @@
     margin-right: 10px;
 }
 
-.MMM-next-episode .show-details {
+.MMM-next-episode .show-details.thumbnail-enabled {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.MMM-next-episode .show-details.thumbnail-disabled {
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
