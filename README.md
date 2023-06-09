@@ -12,6 +12,11 @@ Track the TV show and movies you watch.
 
 <p></p>
 
+![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/8d1a397e-0e15-4e94-9895-c94debd2ad8a)
+
+
+<p></p>
+
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/b8fffcaf-2845-4398-bf5c-9c80bb5d1da8)
 
 
