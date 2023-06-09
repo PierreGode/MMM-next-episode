@@ -74,43 +74,51 @@ Module.register('MMM-next-episode', {
         return processedData;
     },
 
-    getDom: function() {
-        console.log("next-episode, Creating DOM elements");
-        var wrapper = document.createElement('div');
-        wrapper.className = "MMM-next-episode";  // Assign the class
+getDom: function() {
+    console.log("next-episode, Creating DOM elements");
+    var wrapper = document.createElement('div');
+    wrapper.className = "MMM-next-episode";  // Assign the class
 
-        if (this.qrCode) {
-            var img = document.createElement('img');
-            img.src = this.qrCode;
-            wrapper.appendChild(img);
-        } else {
-            this.shows.forEach((show) => {
-                let airDateDays = parseInt(show.airDate.split(' ').filter(word => !isNaN(word))[0]);
+    if (this.qrCode) {
+        var img = document.createElement('img');
+        img.src = this.qrCode;
+        wrapper.appendChild(img);
+    } else {
+        this.shows.forEach((show) => {
+            let airDateDays = parseInt(show.airDate.split(' ').filter(word => !isNaN(word))[0]);
 
-                console.log(`next-episode, airDateDays: ${airDateDays}`);
+            console.log(`next-episode, airDateDays: ${airDateDays}`);
 
-                if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
-                    console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
-                    var showElement = document.createElement('div');
-                    showElement.className = "show-element";  // Assign the class
+            if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
+                console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
+                var showElement = document.createElement('div');
+                showElement.className = "show-element";  // Assign the class
 
-                    if (this.config.ShowThumbnail) {
-                        var img = document.createElement('img');
-                        img.src = show.thumbnail;
-                        img.className = "show-thumbnail";  // Assign the class
-                        showElement.appendChild(img);
-                    }
-
-                    var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
-                    if (this.config.displaySeasonAndEpisode) {
-                        showElement.innerHTML += `${capitalizedShowName}: S${show.season}E${show.episode} ${show.airDate}`;
-                    } else {
-                        showElement.innerHTML += `${capitalizedShowName}: ${show.airDate}`;
-                    }
-                    wrapper.appendChild(showElement);
+                if (this.config.ShowThumbnail) {
+                    var img = document.createElement('img');
+                    img.src = show.thumbnail;
+                    img.className = "show-thumbnail";  // Assign the class
+                    showElement.appendChild(img);
                 }
-            });
-        }
-        return wrapper;
+
+                var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
+                var episodeElement = document.createElement('span');
+                episodeElement.className = "show-episode";  // Assign the class
+                var airDateElement = document.createElement('span');
+                airDateElement.className = "show-airdate";  // Assign the class
+
+                if (this.config.displaySeasonAndEpisode) {
+                    episodeElement.innerHTML = `S${show.season}E${show.episode}`;
+                }
+                airDateElement.innerHTML = show.airDate;
+
+                showElement.appendChild(episodeElement);
+                showElement.appendChild(airDateElement);
+
+                wrapper.appendChild(showElement);
+            }
+        });
     }
+    return wrapper;
+}
 });
