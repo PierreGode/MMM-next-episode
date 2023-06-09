@@ -64,7 +64,7 @@ After adding values in  id: '' and hash_key: ''  in the config below, restart th
 | name | values | info |
 | --- | --- | --- |
 | `displaySeasonAndEpisode:` | true false | show or hide season and episode. |
-| `maxdays:` | 300 0  |  Default 7 .  How many days in the future to show shows from. minimum 0 but will always show Today Tomorrow. |
+| `maxdays:` | 300 0  |  Default 7 .  How many days in the future to show shows from. minimum 0 but will always show Today and the next day. |
 |`ShowThumbnail`| true false | show thumbnail of show or movie |
 |`ThumbnailSize`| 'small', 'medium', or 'large'| change size of thumbnail |
 <p></p>
