@@ -3,7 +3,7 @@
 .MMM-next-episode .show-element {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;  /* Add space below each show element */
+    margin-bottom: 10px;  /* Add space below each show element */
 }
 
 .MMM-next-episode .show-thumbnail {
