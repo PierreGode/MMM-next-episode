@@ -27,11 +27,11 @@ module.exports = NodeHelper.create({
                 clearInterval(this.timer);
             }
 
-            // Set interval to fetch data every 24 hours
+            // Set interval to fetch data as per the configuration
             var self = this;
             this.timer = setInterval(function() {
                 self.getData(payload);
-            }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+            }, payload.updateInterval * 60 * 1000); // updateInterval in minutes
         }
     },
 
