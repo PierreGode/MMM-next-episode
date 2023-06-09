@@ -1,11 +1,20 @@
 /* MMM-next-episode.css */
 
-.MMM-next-episode .show-element {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;  /* Add space below each show element */
+.MMM-next-episode {
+  /* Add your wrapper styles here */
 }
 
-.MMM-next-episode .show-thumbnail {
-    margin-right: 10px;
+.show-element {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.show-thumbnail {
+  margin-right: 10px;
+}
+
+.air-date {
+  flex-grow: 1;
+  text-align: right;
 }
