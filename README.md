@@ -24,6 +24,12 @@ cd MagicMirror/modules
 ```
 git clone https://github.com/PierreGode/MMM-next-episode.git
 ```
+
+```
+cd MMM-next-episode
+```
+
+
 ```
 npm install
 ```
