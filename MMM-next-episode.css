@@ -21,10 +21,11 @@
 }
 
 .MMM-next-episode .show-details .show-episode {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .MMM-next-episode .show-details .show-airdate {
     margin-left: auto;
     text-align: right;
+    align-self: flex-end; /* Align the show-airdate vertically */
 }
