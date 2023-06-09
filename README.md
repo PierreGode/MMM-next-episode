@@ -41,8 +41,8 @@ In MagicMirror/config/config.js
     hash_key: '',
     displaySeasonAndEpisode: false,
     maxdays: 7,
-    ShowThumbnail: true,     // Add this
-    ThumbnailSize: 'medium'  // Add this
+    ShowThumbnail: true,
+    ThumbnailSize: medium
   }
 }
 ,
