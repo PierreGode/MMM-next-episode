@@ -1,4 +1,3 @@
-// MMM-next-episode.js
 Module.register('MMM-next-episode', {
     defaults: {
         id: '',
@@ -43,7 +42,6 @@ Module.register('MMM-next-episode', {
 
         let processedData = [];
 
-        // Map the names from the config to the actual sizes
         const sizeMapping = {
             small: 'little',
             medium: 'thumb',
@@ -60,7 +58,6 @@ Module.register('MMM-next-episode', {
                     season: result.getElementsByTagName('seasonNumber')[0].textContent,
                     episode: result.getElementsByTagName('episodeNumber')[0].textContent,
                     showName: result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', ''),
-                    // Convert the size names from the config to the actual sizes when constructing the URL
                     thumbnail: `https://static.next-episode.net/tv-shows-images/${sizeMapping[this.config.ThumbnailSize]}/${result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', '')}.jpg`,
                     airDate: result.getElementsByTagName('countdown')[0].textContent
                 };
@@ -74,59 +71,59 @@ Module.register('MMM-next-episode', {
         return processedData;
     },
 
-getDom: function() {
-    console.log("next-episode, Creating DOM elements");
-    var wrapper = document.createElement('div');
-    wrapper.className = "MMM-next-episode";
+    getDom: function() {
+        console.log("next-episode, Creating DOM elements");
+        var wrapper = document.createElement('div');
+        wrapper.className = "MMM-next-episode";
 
-    if (this.qrCode) {
-        var img = document.createElement('img');
-        img.src = this.qrCode;
-        wrapper.appendChild(img);
-    } else {
-        this.shows.forEach((show) => {
-            let airDateDays = parseInt(show.airDate.split(' ').filter(word => !isNaN(word))[0]);
+        if (this.qrCode) {
+            var img = document.createElement('img');
+            img.src = this.qrCode;
+            wrapper.appendChild(img);
+        } else {
+            this.shows.forEach((show) => {
+                let airDateDays = parseInt(show.airDate.split(' ').filter(word => !isNaN(word))[0]);
 
-            console.log(`next-episode, airDateDays: ${airDateDays}`);
+                console.log(`next-episode, airDateDays: ${airDateDays}`);
 
-            if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
-                console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
-                var showElement = document.createElement('div');
-                showElement.className = "show-element";
+                if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
+                    console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
+                    var showElement = document.createElement('div');
+                    showElement.className = "show-element";
 
-                if (this.config.ShowThumbnail) {
-                    var img = document.createElement('img');
-                    img.src = show.thumbnail;
-                    img.className = "show-thumbnail";
-                    showElement.appendChild(img);
+                    if (this.config.ShowThumbnail) {
+                        var img = document.createElement('img');
+                        img.src = show.thumbnail;
+                        img.className = "show-thumbnail";
+                        showElement.appendChild(img);
+                    }
+
+                    var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
+                    var showDetails = document.createElement('div');
+                    showDetails.className = this.config.ShowThumbnail ? "show-details thumbnail-enabled" : "show-details thumbnail-disabled";
+
+                    var showNameElement = document.createElement('div');
+                    showNameElement.className = "show-name";
+                    showNameElement.innerHTML = capitalizedShowName;
+                    showDetails.appendChild(showNameElement);
+
+                    if (this.config.displaySeasonAndEpisode) {
+                        var episodeElement = document.createElement('div');
+                        episodeElement.className = "show-episode";
+                        episodeElement.innerHTML = `S${show.season}E${show.episode}`;
+                        showDetails.appendChild(episodeElement);
+                    }
+
+                    var airDateElement = document.createElement('div');
+                    airDateElement.className = "show-airdate";
+                    airDateElement.innerHTML = show.airDate;
+                    showDetails.appendChild(airDateElement);
+
+                    showElement.appendChild(showDetails);
+                    wrapper.appendChild(showElement);
                 }
-
-                var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
-                var showDetails = document.createElement('div');
-                showDetails.className = "show-details";
-
-                var showNameElement = document.createElement('div');
-                showNameElement.className = "show-name";
-                showNameElement.innerHTML = capitalizedShowName;
-                showDetails.appendChild(showNameElement);
-
-                if (this.config.displaySeasonAndEpisode) {
-                    var episodeElement = document.createElement('div');
-                    episodeElement.className = "show-episode";
-                    episodeElement.innerHTML = `S${show.season}E${show.episode}`;
-                    showDetails.appendChild(episodeElement);
-                }
-
-                var airDateElement = document.createElement('div');
-                airDateElement.className = "show-airdate";
-                airDateElement.innerHTML = show.airDate;
-                showDetails.appendChild(airDateElement);
-
-                showElement.appendChild(showDetails);
-                wrapper.appendChild(showElement);
-            }
-        });
+            });
+        }
+        return wrapper;
     }
-    return wrapper;
-}
 });
