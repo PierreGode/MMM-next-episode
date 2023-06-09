@@ -44,8 +44,7 @@ In MagicMirror/config/config.js
     ShowThumbnail: true,
     ThumbnailSize: medium
   }
-}
-,
+},
 ```
 
 <h4>How to get your id and hash_key</h4> <p></p> 
