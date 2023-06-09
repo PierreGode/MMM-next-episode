@@ -2,10 +2,29 @@
 
 .MMM-next-episode .show-element {
     display: flex;
-    align-items: center;
-    margin-bottom: 10px;  /* Add space below each show element */
+    align-items: flex-start; /* Align items vertically at the top */
+    margin-bottom: 10px;
 }
 
 .MMM-next-episode .show-thumbnail {
     margin-right: 10px;
+}
+
+.MMM-next-episode .show-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.MMM-next-episode .show-details .show-name {
+    font-weight: bold;
+}
+
+.MMM-next-episode .show-details .show-episode {
+    margin-bottom: 5px;
+}
+
+.MMM-next-episode .show-airdate {
+    margin-left: 200px;
+    text-align: right;
 }
