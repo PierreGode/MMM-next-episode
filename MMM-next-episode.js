@@ -74,54 +74,43 @@ Module.register('MMM-next-episode', {
         return processedData;
     },
 
-getDom: function() {
-    console.log("next-episode, Creating DOM elements");
-    var wrapper = document.createElement('div');
-    wrapper.className = "MMM-next-episode";
+    getDom: function() {
+        console.log("next-episode, Creating DOM elements");
+        var wrapper = document.createElement('div');
+        wrapper.className = "MMM-next-episode";  // Assign the class
 
-    if (this.qrCode) {
-        var img = document.createElement('img');
-        img.src = this.qrCode;
-        wrapper.appendChild(img);
-    } else {
-        this.shows.forEach((show) => {
-            let airDateDays = parseInt(show.airDate.split(' ').filter(word => !isNaN(word))[0]);
+        if (this.qrCode) {
+            var img = document.createElement('img');
+            img.src = this.qrCode;
+            wrapper.appendChild(img);
+        } else {
+            this.shows.forEach((show) => {
+                let airDateDays = parseInt(show.airDate.split(' ').filter(word => !isNaN(word))[0]);
 
-            console.log(`next-episode, airDateDays: ${airDateDays}`);
+                console.log(`next-episode, airDateDays: ${airDateDays}`);
 
-            if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
-                console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
-                var showElement = document.createElement('div');
-                showElement.className = "show-element";
+                if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
+                    console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
+                    var showElement = document.createElement('div');
+                    showElement.className = "show-element";  // Assign the class
 
-                if (this.config.ShowThumbnail) {
-                    var img = document.createElement('img');
-                    img.src = show.thumbnail;
-                    img.className = "show-thumbnail";
-                    showElement.appendChild(img);
+                    if (this.config.ShowThumbnail) {
+                        var img = document.createElement('img');
+                        img.src = show.thumbnail;
+                        img.className = "show-thumbnail";  // Assign the class
+                        showElement.appendChild(img);
+                    }
+
+                    var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
+                    if (this.config.displaySeasonAndEpisode) {
+                        showElement.innerHTML += `${capitalizedShowName}: S${show.season}E${show.episode} ${show.airDate}`;
+                    } else {
+                        showElement.innerHTML += `${capitalizedShowName}: ${show.airDate}`;
+                    }
+                    wrapper.appendChild(showElement);
                 }
-
-                var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
-                var showDetails = document.createElement('div');
-                showDetails.className = "show-details";
-
-                if (this.config.displaySeasonAndEpisode) {
-                    var episodeElement = document.createElement('div');
-                    episodeElement.className = "show-episode";
-                    episodeElement.innerHTML = `S${show.season}E${show.episode}`;
-                    showDetails.appendChild(episodeElement);
-                }
-
-                var airDateElement = document.createElement('div');
-                airDateElement.className = "show-airdate";
-                airDateElement.innerHTML = show.airDate;
-                showDetails.appendChild(airDateElement);
-
-                showElement.appendChild(showDetails);
-                wrapper.appendChild(showElement);
-            }
-        });
+            });
+        }
+        return wrapper;
     }
-    return wrapper;
-}
 });
