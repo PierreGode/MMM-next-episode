@@ -3,11 +3,13 @@
 Magic mirror module for TV shows and movies with next-episode. <p></p>
 Track the TV show and movies you watch.
 
-![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/15bb3c1f-11d7-42b2-bf5f-561e05367e28) ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/e6a603f8-13b1-484d-9923-054716ee29a0) 
+![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/15bb3c1f-11d7-42b2-bf5f-561e05367e28)
+![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/e407db6b-bf51-4131-9846-47e97b6c96c5)
+
+
+<p></p>
 
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/8d1a397e-0e15-4e94-9895-c94debd2ad8a)
-
-![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/e407db6b-bf51-4131-9846-47e97b6c96c5)
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/b8fffcaf-2845-4398-bf5c-9c80bb5d1da8)
 
 
@@ -24,11 +26,7 @@ cd MagicMirror/modules
 ```
 git clone https://github.com/PierreGode/MMM-next-episode.git
 ```
-
-```
 cd MMM-next-episode
-```
-
 
 ```
 npm install
@@ -51,7 +49,8 @@ In MagicMirror/config/config.js
     displaySeasonAndEpisode: false,
     maxdays: 7,
     ShowThumbnail: true,
-    ThumbnailSize: 'small'
+    ThumbnailSize: 'small',
+    updateInterval: 60 // Update interval in minutes
   }
 },
 ```
@@ -74,6 +73,7 @@ After adding values in  id: '' and hash_key: ''  in the config below, restart th
 | `maxdays:` | 300 0  |  Default 7 .  How many days in the future to show shows from. minimum 0 but will always show Today and the next day. |
 |`ShowThumbnail`| true false | show thumbnail of show or movie |
 |`ThumbnailSize`| 'small', 'medium', or 'large'| change size of thumbnail |
+|`updateInterval`| '60'| 60 is default to update avery hour, set theUpdate interval in minutes |
 <p></p>
 <h4>NEW PROJECT, BETA.</H4>
 please Create tickets or pull request.
