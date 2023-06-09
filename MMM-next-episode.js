@@ -1,10 +1,18 @@
+// MMM-next-episode.js
 Module.register('MMM-next-episode', {
     defaults: {
         id: '',
         hash_key: '',
         displaySeasonAndEpisode: false,
-        ShowThumbnail: true, //added to enable thumbnail functionality
-        ThumbnailSize: 'little' //added to set thumbnail size
+        maxdays: 7,
+        ShowThumbnail: true,
+        ThumbnailSize: 'medium'
+    },
+
+    getStyles: function() {
+        return [
+            'MMM-next-episode.css' // Path to the CSS file
+        ];
     },
 
     start: function() {
@@ -20,7 +28,7 @@ Module.register('MMM-next-episode', {
             console.log("next-episode, Received DATA notification with payload: ", payload);
             this.shows = this.processData(payload);
             this.updateDom();
-        } else if (notification === 'QR_CODE') { 
+        } else if (notification === 'QR_CODE') {
             console.log("next-episode, Received QR_CODE notification with payload: ", payload);
             this.qrCode = payload;
             this.updateDom();
@@ -39,20 +47,14 @@ Module.register('MMM-next-episode', {
         for(let i=0; i<results.length; i++){
             try {
                 const result = results[i];
-                let showName = '';
-                try {
-                    showName = result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', '');
-                } catch (error) {
-                    console.error("Error occurred when processing imageUrl: ", error);
-                }
                 const showData = {
                     id: result.getElementsByTagName('showid')[0].textContent,
                     time: result.getElementsByTagName('hour')[0].textContent,
                     season: result.getElementsByTagName('seasonNumber')[0].textContent,
                     episode: result.getElementsByTagName('episodeNumber')[0].textContent,
-                    showName: showName,
-                    airDate: result.getElementsByTagName('countdown')[0].textContent,
-                    thumbnail: `https://static.next-episode.net/tv-shows-images/${this.config.ThumbnailSize}/${showName}.jpg`, // thumbnail URL added to show data
+                    showName: result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', ''),
+                    thumbnail: `https://static.next-episode.net/tv-shows-images/${this.config.ThumbnailSize}/${result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', '')}.jpg`,
+                    airDate: result.getElementsByTagName('countdown')[0].textContent
                 };
                 console.log("next-episode, Processed show data: ", showData);
                 processedData.push(showData);
@@ -67,6 +69,7 @@ Module.register('MMM-next-episode', {
     getDom: function() {
         console.log("next-episode, Creating DOM elements");
         var wrapper = document.createElement('div');
+        wrapper.className = "MMM-next-episode";  // Assign the class
 
         if (this.qrCode) {
             var img = document.createElement('img');
@@ -81,10 +84,12 @@ Module.register('MMM-next-episode', {
                 if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
                     console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
                     var showElement = document.createElement('div');
+                    showElement.className = "show-element";  // Assign the class
 
-                    if (this.config.ShowThumbnail) { // If ShowThumbnail is true, create img element with thumbnail URL
+                    if (this.config.ShowThumbnail) {
                         var img = document.createElement('img');
                         img.src = show.thumbnail;
+                        img.className = "show-thumbnail";  // Assign the class
                         showElement.appendChild(img);
                     }
 
