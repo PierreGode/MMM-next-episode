@@ -14,9 +14,9 @@
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: right;
     text-align: right;
-    margin-right: 100px;
+    margin-left: 100px;
 }
 
 .MMM-next-episode .show-name {
