@@ -58,7 +58,7 @@ When starting the module the first time without id and hash_key in the config, a
 Example:<p></p>
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/4680580b-c497-4a8e-8c04-37b3d62852b7)
 <p></p>
-Scan the QR code from your mirror and a empy page will show. <h4>NOTE! Edit the link and replace USERNAME and PASSWORD</h4> On your device you have scanned the qr code with, edit the link and change Only: USERNAME and PASSWORD with your login information for next-episode to get id and hash. <p></p> They might come together a one line but the first 9 digits are the id and the rest is the hash.
+Scan the QR code from your mirror and a empy page will show. <h4>NOTE! Edit the link and replace USERNAME and PASSWORD</h4> On your device you have scanned the qr code with, edit the link and change Only: USERNAME and PASSWORD with your login information for next-episode to get id and hash. <p></p> They might come together as a one line but the first 9 digits are the id and the rest is the hash.
 Note: Using special characters such as '+', '"', '^', '%', '$', '#', in your password can cause the link to break. You may consider temporarily changing your password for this purpose.
 <p></p>
 After adding values in  id: '' and hash_key: ''  in the config below, restart the magic mirror.
