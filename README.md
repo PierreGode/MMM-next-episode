@@ -8,9 +8,9 @@ Track the TV show and movies you watch.
 
 <p></p>
 
-![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/506c098c-145a-427e-8927-f86cd97cfa5b)
-![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/bd421b11-a1b9-4836-9d9a-49bec9f84f73)
 
+![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/bd421b11-a1b9-4836-9d9a-49bec9f84f73)
+![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/506c098c-145a-427e-8927-f86cd97cfa5b)
 
 
 
