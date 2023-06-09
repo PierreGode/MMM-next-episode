@@ -1,0 +1,10 @@
+/* MMM-next-episode.css */
+
+.MMM-next-episode .show-element {
+    display: flex;
+    align-items: center;
+}
+
+.MMM-next-episode .show-thumbnail {
+    margin-right: 10px;
+}
