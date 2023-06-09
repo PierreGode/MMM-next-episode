@@ -4,6 +4,8 @@ Magic mirror module for TV shows and movies with next-episode. <p></p>
 Track the TV show and movies you watch.
 
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/15bb3c1f-11d7-42b2-bf5f-561e05367e28) ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/8d1a397e-0e15-4e94-9895-c94debd2ad8a)
+
+
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/e6a603f8-13b1-484d-9923-054716ee29a0)
 
 
