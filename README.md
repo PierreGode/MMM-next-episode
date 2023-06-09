@@ -69,10 +69,10 @@ After adding values in  id: '' and hash_key: ''  in the config below, restart th
 | name | values | info |
 | --- | --- | --- |
 | `displaySeasonAndEpisode:` | true false | show or hide season and episode. |
-| `maxdays:` | 300 |  Default 7 .  How many days in the future to show shows from. minimum 0 but will always show Today and the next day. |
+| `maxdays:` | example: 300 |  Default 7 .  How many days in the future to show shows from. minimum 0 but will always show Today and the next day. |
 |`ShowThumbnail`| true false | show thumbnail of show or movie |
 |`ThumbnailSize`| 'small', 'medium', or 'large'| change size of thumbnail |
-|`updateInterval`| '60'| 60 is default to update avery hour, set theUpdate interval in minutes |
+|`updateInterval`| example: '60'| 60 is default to update avery hour, set theUpdate interval in minutes |
 <p></p>
 <h4>NEW PROJECT, BETA.</H4>
 please Create tickets or pull request.
