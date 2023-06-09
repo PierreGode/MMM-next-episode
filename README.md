@@ -6,6 +6,8 @@ Track the TV show and movies you watch.
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/38e955a4-a156-4ef8-8b67-6e0b93e0645c)
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/08f59252-8a0c-4d29-8d6f-716336204fb3)
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/506c098c-145a-427e-8927-f86cd97cfa5b)
+![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/bd421b11-a1b9-4836-9d9a-49bec9f84f73)
+
 
 
 
