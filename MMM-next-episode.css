@@ -16,6 +16,10 @@
     align-items: flex-start;
 }
 
+.MMM-next-episode .show-details .show-name {
+    font-weight: bold;
+}
+
 .MMM-next-episode .show-details .show-episode {
     margin-bottom: 5px;
 }
