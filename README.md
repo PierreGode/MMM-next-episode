@@ -75,10 +75,10 @@ After adding values in  id: '' and hash_key: ''  in the config below, restart th
 |`ThumbnailSize`| small medium or large| change size of thumbnail |
 |`updateInterval`| example: 180 | 180 is default to update avery 3 hours and is the lowest time allowed, set theUpdate interval in minutes |
 <p></p>
-<h4>NEW PROJECT, BETA.</H4>
-please Create tickets or pull request.
+Comming updates:
+Change styles from config
 <p></p>
-In development
+Completed 
 <p></p>
 API is free, but feel free to support https://next-episode.net/
 <p></p>
