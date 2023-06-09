@@ -58,40 +58,42 @@ Module.register('MMM-next-episode', {
         return processedData;
     },
 
-    getDom: function() {
-        console.log("next-episode, Creating DOM elements");
-        var wrapper = document.createElement('div');
+getDom: function() {
+    console.log("next-episode, Creating DOM elements");
+    var wrapper = document.createElement('div');
 
-        if (this.qrCode) {
-            var img = document.createElement('img');
-            img.src = this.qrCode;
-            wrapper.appendChild(img);
-        } else {
-            this.shows.forEach((show) => {
-                let airDateDays = parseInt(show.airDate.split(' ').filter(word => !isNaN(word))[0]);
+    if (this.qrCode) {
+        var img = document.createElement('img');
+        img.src = this.qrCode;
+        wrapper.appendChild(img);
+    } else {
+        this.shows.forEach((show) => {
+            let airDateDays = parseInt(show.airDate.split(' ').filter(word => !isNaN(word))[0]);
 
-                console.log(`next-episode, airDateDays: ${airDateDays}`);
+            console.log(`next-episode, airDateDays: ${airDateDays}`);
 
-                if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
-                    console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
-                    var showElement = document.createElement('div');
+            if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
+                console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
+                var showElement = document.createElement('div');
 
-                    if (this.config.ShowThumbnail) {
-                        var img = document.createElement('img');
-                        img.src = show.thumbnail;
-                        showElement.appendChild(img);
-                    }
-
-                    var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
-                    if (this.config.displaySeasonAndEpisode) {
-                        showElement.innerHTML += `${capitalizedShowName}: S${show.season}E${show.episode} ${show.airDate}`;
-                    } else {
-                        showElement.innerHTML += `${capitalizedShowName}: ${show.airDate}`;
-                    }
-                    wrapper.appendChild(showElement);
+                if (this.config.ShowThumbnail) {
+                    var img = document.createElement('img');
+                    img.src = show.thumbnail;
+                    showElement.appendChild(img);
                 }
-            });
-        }
-        return wrapper;
+
+                var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
+                var textElement;
+                if (this.config.displaySeasonAndEpisode) {
+                    textElement = document.createTextNode(`: ${capitalizedShowName}: S${show.season}E${show.episode} ${show.airDate}`);
+                } else {
+                    textElement = document.createTextNode(`: ${capitalizedShowName}: ${show.airDate}`);
+                }
+                showElement.appendChild(textElement);
+                wrapper.appendChild(showElement);
+            }
+        });
     }
+    return wrapper;
+}
 });
