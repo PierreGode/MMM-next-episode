@@ -103,7 +103,7 @@ Module.register('MMM-next-episode', {
 
                     var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
                     if (this.config.displaySeasonAndEpisode) {
-                        showElement.innerHTML += `${capitalizedShowName}: S${show.season}E${show.episode} ${show.airDate}`;
+                        showElement.innerHTML += `${capitalizedShowName}: S${show.season}E${show.episode} <p></p> ${show.airDate}`;
                     } else {
                         showElement.innerHTML += `${capitalizedShowName}: ${show.airDate}`;
                     }
