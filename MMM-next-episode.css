@@ -11,21 +11,17 @@
 }
 
 .MMM-next-episode .show-details {
-    display: flex;
     flex-grow: 1;
-    align-items: flex-start;
-}
-
-.MMM-next-episode .show-details .show-info {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.MMM-next-episode .show-details .show-name {
+.MMM-next-episode .show-name {
     font-weight: bold;
 }
 
-.MMM-next-episode .show-details .show-airdate {
+.MMM-next-episode .show-airdate {
     margin-left: 10px;
     text-align: right;
 }
