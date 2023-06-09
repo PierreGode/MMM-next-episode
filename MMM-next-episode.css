@@ -13,8 +13,12 @@
 .MMM-next-episode .show-details {
     display: flex;
     flex-grow: 1;
+    align-items: flex-start;
+}
+
+.MMM-next-episode .show-details .show-info {
+    display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .MMM-next-episode .show-details .show-name {
@@ -22,6 +26,6 @@
 }
 
 .MMM-next-episode .show-details .show-airdate {
-    margin-top: 10px;
+    margin-left: 10px;
     text-align: right;
 }
