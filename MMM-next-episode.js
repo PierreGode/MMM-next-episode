@@ -73,11 +73,10 @@ Module.register('MMM-next-episode', {
         console.log("next-episode, Final processed data: ", processedData);
         return processedData;
     },
-
 getDom: function() {
     console.log("next-episode, Creating DOM elements");
     var wrapper = document.createElement('div');
-    wrapper.className = "MMM-next-episode";  // Assign the class
+    wrapper.className = "MMM-next-episode";
 
     if (this.qrCode) {
         var img = document.createElement('img');
@@ -92,29 +91,32 @@ getDom: function() {
             if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
                 console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
                 var showElement = document.createElement('div');
-                showElement.className = "show-element";  // Assign the class
+                showElement.className = "show-element";
 
                 if (this.config.ShowThumbnail) {
                     var img = document.createElement('img');
                     img.src = show.thumbnail;
-                    img.className = "show-thumbnail";  // Assign the class
+                    img.className = "show-thumbnail";
                     showElement.appendChild(img);
                 }
 
                 var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
-                var episodeElement = document.createElement('span');
-                episodeElement.className = "show-episode";  // Assign the class
-                var airDateElement = document.createElement('span');
-                airDateElement.className = "show-airdate";  // Assign the class
+                var showDetails = document.createElement('div');
+                showDetails.className = "show-details";
 
                 if (this.config.displaySeasonAndEpisode) {
+                    var episodeElement = document.createElement('div');
+                    episodeElement.className = "show-episode";
                     episodeElement.innerHTML = `S${show.season}E${show.episode}`;
+                    showDetails.appendChild(episodeElement);
                 }
+
+                var airDateElement = document.createElement('div');
+                airDateElement.className = "show-airdate";
                 airDateElement.innerHTML = show.airDate;
+                showDetails.appendChild(airDateElement);
 
-                showElement.appendChild(episodeElement);
-                showElement.appendChild(airDateElement);
-
+                showElement.appendChild(showDetails);
                 wrapper.appendChild(showElement);
             }
         });
