@@ -2,15 +2,13 @@ Module.register('MMM-next-episode', {
     defaults: {
         id: '',
         hash_key: '',
-        displaySeasonAndEpisode: false,
-        ShowThumbnail: false,
-        ThumbnailSize: 'small'
+        displaySeasonAndEpisode: false
     },
 
     start: function() {
         console.log("MMM-next-episode started!");
         this.shows = [];
-        this.qrCode = null;
+        this.qrCode = null; // added to hold QR code
         this.sendSocketNotification('GET_DATA', this.config);
     },
 
@@ -20,7 +18,7 @@ Module.register('MMM-next-episode', {
             console.log("next-episode, Received DATA notification with payload: ", payload);
             this.shows = this.processData(payload);
             this.updateDom();
-        } else if (notification === 'QR_CODE') {
+        } else if (notification === 'QR_CODE') {  // handle QR_CODE notification
             console.log("next-episode, Received QR_CODE notification with payload: ", payload);
             this.qrCode = payload;
             this.updateDom();
@@ -39,13 +37,18 @@ Module.register('MMM-next-episode', {
         for(let i=0; i<results.length; i++){
             try {
                 const result = results[i];
+                let showName = '';
+                try {
+                    showName = result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', '');
+                } catch (error) {
+                    console.error("Error occurred when processing imageUrl: ", error);
+                }
                 const showData = {
                     id: result.getElementsByTagName('showid')[0].textContent,
                     time: result.getElementsByTagName('hour')[0].textContent,
                     season: result.getElementsByTagName('seasonNumber')[0].textContent,
                     episode: result.getElementsByTagName('episodeNumber')[0].textContent,
-                    showName: result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', ''),
-                    thumbnail: `https://static.next-episode.net/tv-shows-images/${this.config.ThumbnailSize}/${show.showName}.jpg`,
+                    showName: showName,
                     airDate: result.getElementsByTagName('countdown')[0].textContent
                 };
                 console.log("next-episode, Processed show data: ", showData);
@@ -58,42 +61,33 @@ Module.register('MMM-next-episode', {
         return processedData;
     },
 
-getDom: function() {
-    console.log("next-episode, Creating DOM elements");
-    var wrapper = document.createElement('div');
+    getDom: function() {
+        console.log("next-episode, Creating DOM elements");
+        var wrapper = document.createElement('div');
 
-    if (this.qrCode) {
-        var img = document.createElement('img');
-        img.src = this.qrCode;
-        wrapper.appendChild(img);
-    } else {
-        this.shows.forEach((show) => {
-            let airDateDays = parseInt(show.airDate.split(' ').filter(word => !isNaN(word))[0]);
+        if (this.qrCode) {
+            var img = document.createElement('img');
+            img.src = this.qrCode;
+            wrapper.appendChild(img);
+        } else {
+            this.shows.forEach((show) => {
+                let airDateDays = parseInt(show.airDate.split(' ').filter(word => !isNaN(word))[0]);
 
-            console.log(`next-episode, airDateDays: ${airDateDays}`);
+                console.log(`next-episode, airDateDays: ${airDateDays}`);
 
-            if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
-                console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
-                var showElement = document.createElement('div');
-
-                if (this.config.ShowThumbnail) {
-                    var img = document.createElement('img');
-                    img.src = show.thumbnail;
-                    showElement.appendChild(img);
+                if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
+                    console.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
+                    var showElement = document.createElement('div');
+                    var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
+                    if (this.config.displaySeasonAndEpisode) {
+                        showElement.innerHTML = `${capitalizedShowName}: S${show.season}E${show.episode} ${show.airDate}`;
+                    } else {
+                        showElement.innerHTML = `${capitalizedShowName}: ${show.airDate}`;
+                    }
+                    wrapper.appendChild(showElement);
                 }
-
-                var capitalizedShowName = show.showName.charAt(0).toUpperCase() + show.showName.slice(1);
-                var textElement;
-                if (this.config.displaySeasonAndEpisode) {
-                    textElement = document.createTextNode(`: ${capitalizedShowName}: S${show.season}E${show.episode} ${show.airDate}`);
-                } else {
-                    textElement = document.createTextNode(`: ${capitalizedShowName}: ${show.airDate}`);
-                }
-                showElement.appendChild(textElement);
-                wrapper.appendChild(showElement);
-            }
-        });
+            });
+        }
+        return wrapper;
     }
-    return wrapper;
-}
 });
