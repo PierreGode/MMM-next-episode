@@ -35,36 +35,44 @@ Module.register('MMM-next-episode', {
         }
     },
 
-    processData: function(data) {
-        console.log("next-episode, Processing data: ", data);
+processData: function(data) {
+    console.log("next-episode, Processing data: ", data);
 
-        let parser = new DOMParser();
-        let xmlDoc = parser.parseFromString(data, "text/xml");
+    let parser = new DOMParser();
+    let xmlDoc = parser.parseFromString(data, "text/xml");
 
-        let processedData = [];
+    let processedData = [];
 
-        let results = xmlDoc.getElementsByTagName('result');
-        for(let i=0; i<results.length; i++){
-            try {
-                const result = results[i];
-                const showData = {
-                    id: result.getElementsByTagName('showid')[0].textContent,
-                    time: result.getElementsByTagName('hour')[0].textContent,
-                    season: result.getElementsByTagName('seasonNumber')[0].textContent,
-                    episode: result.getElementsByTagName('episodeNumber')[0].textContent,
-                    showName: result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', ''),
-                    thumbnail: `https://static.next-episode.net/tv-shows-images/${this.config.ThumbnailSize}/${result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', '')}.jpg`,
-                    airDate: result.getElementsByTagName('countdown')[0].textContent
-                };
-                console.log("next-episode, Processed show data: ", showData);
-                processedData.push(showData);
-            } catch (error) {
-                console.error("next-episode, Error occurred when processing data: ", error);
-            }
+    // This is the new size mapping
+    const sizeMapping = {
+        small: 'little',
+        medium: 'thumb',
+        large: 'big'
+    };
+
+    let results = xmlDoc.getElementsByTagName('result');
+    for(let i=0; i<results.length; i++){
+        try {
+            const result = results[i];
+            const showData = {
+                id: result.getElementsByTagName('showid')[0].textContent,
+                time: result.getElementsByTagName('hour')[0].textContent,
+                season: result.getElementsByTagName('seasonNumber')[0].textContent,
+                episode: result.getElementsByTagName('episodeNumber')[0].textContent,
+                showName: result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', ''),
+                // Use the mapped size for the thumbnail URL
+                thumbnail: `https://static.next-episode.net/tv-shows-images/${sizeMapping[this.config.ThumbnailSize]}/${show.showName}.jpg`,
+                airDate: result.getElementsByTagName('countdown')[0].textContent
+            };
+            console.log("next-episode, Processed show data: ", showData);
+            processedData.push(showData);
+        } catch (error) {
+            console.error("next-episode, Error occurred when processing data: ", error);
         }
-        console.log("next-episode, Final processed data: ", processedData);
-        return processedData;
-    },
+    }
+    console.log("next-episode, Final processed data: ", processedData);
+    return processedData;
+},
 
     getDom: function() {
         console.log("next-episode, Creating DOM elements");
