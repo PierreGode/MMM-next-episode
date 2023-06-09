@@ -43,7 +43,6 @@ processData: function(data) {
 
     let processedData = [];
 
-    // This is the new size mapping
     const sizeMapping = {
         small: 'little',
         medium: 'thumb',
@@ -60,8 +59,7 @@ processData: function(data) {
                 season: result.getElementsByTagName('seasonNumber')[0].textContent,
                 episode: result.getElementsByTagName('episodeNumber')[0].textContent,
                 showName: result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', ''),
-                // Use the mapped size for the thumbnail URL
-                thumbnail: `https://static.next-episode.net/tv-shows-images/${sizeMapping[this.config.ThumbnailSize]}/${show.showName}.jpg`,
+                thumbnail: `https://static.next-episode.net/tv-shows-images/${sizeMapping[this.config.ThumbnailSize.toLowerCase()]}/${show.showName}.jpg`,
                 airDate: result.getElementsByTagName('countdown')[0].textContent
             };
             console.log("next-episode, Processed show data: ", showData);
