@@ -10,16 +10,21 @@
     margin-right: 10px;
 }
 
-
-.MMM-next-episode .show-details .show-episode {
-    margin-bottom: 5px;
+.MMM-next-episode .show-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
+
 .MMM-next-episode .show-details .show-name {
     font-weight: bold;
 }
 
+.MMM-next-episode .show-details .show-episode {
+    margin-bottom: 5px;
+}
 
-.MMM-next-episode .show-airdate {
-    margin-left: 200px;
+.MMM-next-episode .show-details .show-airdate {
+    margin-left: auto; /* Align the show-airdate to the right */
     text-align: right;
 }
