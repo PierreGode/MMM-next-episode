@@ -3,13 +3,24 @@
 .MMM-next-episode .show-element {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;  /* Add space below each show element */
+    margin-bottom: 10px;
 }
 
 .MMM-next-episode .show-thumbnail {
     margin-right: 10px;
 }
 
-.MMM-next-episode .show-airdate {
-    margin-left: auto;  /* Align show.airDate text to the right */
+.MMM-next-episode .show-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.MMM-next-episode .show-details .show-episode {
+    margin-bottom: 5px;
+}
+
+.MMM-next-episode .show-details .show-airdate {
+    margin-left: auto;
+    text-align: right;
 }
