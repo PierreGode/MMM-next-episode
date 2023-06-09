@@ -42,7 +42,7 @@ In MagicMirror/config/config.js
     displaySeasonAndEpisode: false,
     maxdays: 7,
     ShowThumbnail: true,
-    ThumbnailSize: medium
+    ThumbnailSize: 'medium'
   }
 },
 ```
