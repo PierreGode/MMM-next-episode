@@ -43,6 +43,13 @@ Module.register('MMM-next-episode', {
 
         let processedData = [];
 
+        // Map the names from the config to the actual sizes
+        const sizeMapping = {
+            small: 'little',
+            medium: 'thumb',
+            large: 'big'
+        };
+
         let results = xmlDoc.getElementsByTagName('result');
         for(let i=0; i<results.length; i++){
             try {
@@ -53,7 +60,8 @@ Module.register('MMM-next-episode', {
                     season: result.getElementsByTagName('seasonNumber')[0].textContent,
                     episode: result.getElementsByTagName('episodeNumber')[0].textContent,
                     showName: result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', ''),
-                    thumbnail: `https://static.next-episode.net/tv-shows-images/${this.config.ThumbnailSize}/${result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', '')}.jpg`,
+                    // Convert the size names from the config to the actual sizes when constructing the URL
+                    thumbnail: `https://static.next-episode.net/tv-shows-images/${sizeMapping[this.config.ThumbnailSize]}/${result.getElementsByTagName('imageUrl')[0].textContent.split('/').pop().split('?')[0].replace('.jpg', '')}.jpg`,
                     airDate: result.getElementsByTagName('countdown')[0].textContent
                 };
                 console.log("next-episode, Processed show data: ", showData);
