@@ -105,6 +105,11 @@ getDom: function() {
                 var showDetails = document.createElement('div');
                 showDetails.className = "show-details";
 
+                var showNameElement = document.createElement('div');
+                showNameElement.className = "show-name";
+                showNameElement.innerHTML = capitalizedShowName;
+                showDetails.appendChild(showNameElement);
+
                 if (this.config.displaySeasonAndEpisode) {
                     var episodeElement = document.createElement('div');
                     episodeElement.className = "show-episode";
