@@ -13,7 +13,8 @@ Track the TV shows and movies you watch.
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/b8fffcaf-2845-4398-bf5c-9c80bb5d1da8)
 
 
-
+Uppdate your shows from the apps
+https://apps.apple.com/se/app/next-episode-track-tv-shows/id347009526
 
 
 How to install:<p></p>
