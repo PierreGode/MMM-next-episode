@@ -3,7 +3,7 @@
 Magic mirror module for TV shows and movies with next-episode. <p></p>
 Track the TV shows and movies you watch.
 
-Uppdate your shows from the app<p></p>
+Uppdate your shows from the app.<p></p>
 [Apple](https://apps.apple.com/se/app/next-episode-track-tv-shows/id347009526)
 
 
