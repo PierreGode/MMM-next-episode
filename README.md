@@ -3,6 +3,11 @@
 Magic mirror module for TV shows and movies with next-episode. <p></p>
 Track the TV shows and movies you watch.
 
+Uppdate your shows from the apps
+https://apps.apple.com/se/app/next-episode-track-tv-shows/id347009526
+
+
+
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/15bb3c1f-11d7-42b2-bf5f-561e05367e28)
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/e407db6b-bf51-4131-9846-47e97b6c96c5)
 
@@ -12,9 +17,6 @@ Track the TV shows and movies you watch.
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/8d1a397e-0e15-4e94-9895-c94debd2ad8a)
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/b8fffcaf-2845-4398-bf5c-9c80bb5d1da8)
 
-
-Uppdate your shows from the apps
-https://apps.apple.com/se/app/next-episode-track-tv-shows/id347009526
 
 
 How to install:<p></p>
