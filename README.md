@@ -1,5 +1,5 @@
 # MMM-next-episode
-<p></p>
+
 [Magic mirror](https://magicmirror.builders/) module for tracking TV shows and movies provided from 
 
 [next-episode](https://next-episode.net/)
