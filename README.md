@@ -1,6 +1,6 @@
 # MMM-next-episode
 <p></p>
-Magic mirror module for TV shows and movies with next-episode. <p></p>
+Magic mirror module for tracking TV shows and movies provided from [next-episode](https://next-episode.net/). <p></p>
 Track the TV shows and movies you watch.
 
 Uppdate your shows from the app 
