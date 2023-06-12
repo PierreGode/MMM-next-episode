@@ -88,9 +88,12 @@ After adding values in  id: '' and hash_key: ''  in the config below, restart th
 <p></p>
 Comming updates:
 Change styles from config
-<p></p>
+
 Completed 
-<p></p>
+
+Developed and maintained by [Pierre Gode](https://github.com/PierreGode)
+
 API is free, but feel free to support [next-episode](https://next-episode.net/)
 <p></p>
 Big thanks to SANTAH from [next-episode](https://next-episode.net/) for building API support and providing information for this module.
+
