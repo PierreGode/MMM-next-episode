@@ -12,6 +12,8 @@ for
 and
 [Android](https://play.google.com/store/apps/details?id=net.nextepisode.android&hl=en_US&pli=1)
 
+Magic mirror module:
+
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/15bb3c1f-11d7-42b2-bf5f-561e05367e28)  
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/e407db6b-bf51-4131-9846-47e97b6c96c5)
 
