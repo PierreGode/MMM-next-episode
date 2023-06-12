@@ -20,14 +20,15 @@ Magic mirror module:
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/e407db6b-bf51-4131-9846-47e97b6c96c5)
 
 
-<p></p>
+
 
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/8d1a397e-0e15-4e94-9895-c94debd2ad8a)
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/b8fffcaf-2845-4398-bf5c-9c80bb5d1da8)
 
 
 
-How to install:<p></p>
+How to install:
+
 
 
 
@@ -66,15 +67,17 @@ In MagicMirror/config/config.js
 },
 ```
 
-<h4>How to get your id and hash_key</h4> <p></p> 
+<h4>How to get your id and hash_key</h4>
+
 When starting the module the first time without id and hash_key in the config, a QR code will be displayed on the mirror<p></p>
 
-Example:<p></p>
+Example:
+
 ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/4680580b-c497-4a8e-8c04-37b3d62852b7)
-<p></p>
+
 Scan the QR code from your mirror and a empy page will show. <h4>NOTE! Edit the link and replace USERNAME and PASSWORD</h4> On your device you have scanned the qr code with, edit the link and change Only: USERNAME and PASSWORD with your login information for next-episode to get id and hash. <p></p> They might come together as a one line but the first 9 digits are the id and the rest is the hash.
 Note: Using special characters such as '+', '"', '^', '%', '$', '#', in your password can cause the link to break. You may consider temporarily changing your password for this purpose.
-<p></p>
+
 After adding values in  id: '' and hash_key: ''  in the config below, restart the magic mirror.
 
 ## Config description
@@ -85,7 +88,7 @@ After adding values in  id: '' and hash_key: ''  in the config below, restart th
 |`ShowThumbnail`| true false | show thumbnail of show or movie |
 |`ThumbnailSize`| small medium or large| change size of thumbnail |
 |`updateInterval`| example: 180 | 180 is default to update avery 3 hours and is the lowest time allowed, set theUpdate interval in minutes |
-<p></p>
+
 Comming updates:
 Change styles from config
 
