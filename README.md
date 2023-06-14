@@ -96,6 +96,8 @@ Completed
 
 Developed and maintained by [Pierre Gode](https://github.com/PierreGode)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J2EARPK)
+
 API is free, but feel free to support [next-episode](https://next-episode.net/)
 <p></p>
 Big thanks to SANTAH from [next-episode](https://next-episode.net/) for building API support and providing information for this module.
