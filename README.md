@@ -6,7 +6,7 @@
 
 Track the TV shows and movies you watch.
 
-Uppdate your shows from the app 
+Update your shows from the app 
 for
 [Apple](https://apps.apple.com/se/app/next-episode-track-tv-shows/id347009526)
 and
