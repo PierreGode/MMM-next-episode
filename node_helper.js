@@ -50,6 +50,7 @@ module.exports = NodeHelper.create({
             qrcode.toDataURL(url, function (err, url) {
                 if (err) {
                     console.log("next-episode, Error generating QR Code: ", err);
+                    self.sendSocketNotification('ERROR', 'Error generating QR Code');
                 } else {
                     console.log("next-episode, QR Code: ", url);
                     // Send the QR code URL to the frontend so it can be displayed
@@ -66,6 +67,7 @@ module.exports = NodeHelper.create({
                 } else {
                     console.error("next-episode, Error in getData: ", error);
                     console.log("next-episode, Response status code: ", response && response.statusCode);
+                    self.sendSocketNotification('ERROR', 'Error fetching data from API');
                 }
             });
         }
