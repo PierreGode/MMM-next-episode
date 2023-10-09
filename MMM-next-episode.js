@@ -127,3 +127,4 @@ Module.register('MMM-next-episode', {
         return wrapper;
     }
 });
+//@Created By Pierre Gode
