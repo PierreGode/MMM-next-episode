@@ -1,0 +1,17 @@
+{
+    "name": "mmm-next-episode",
+    "version": "1.0.0",
+    "description": "A module for the MagicMirror² for tracking TV shows and movies provided from .",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PierreGode/MMM-next-episode.git"
+    },
+    "keywords": [
+        "magicmirror",
+        "tvshows",
+        "episodes",
+        "movies"
+    ],
+    "author": "PierreGode",
+    "license": "MIT"
+}
