@@ -60,10 +60,11 @@ They might come together as a one line but the first 9 digits are the id and the
 After adding values `id` and `hash_key` in the config above, restart the MagicMirror.
 
 ### Dependencies
+```
 npm install request
 npm install qrcode
 npm install uuid
-
+```
 
 ### Config description
 
