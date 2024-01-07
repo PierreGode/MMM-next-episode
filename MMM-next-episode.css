@@ -1,34 +1,34 @@
 /* MMM-next-episode.css */
 
 .MMM-next-episode .show-element {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .MMM-next-episode .show-thumbnail {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .MMM-next-episode .show-details.thumbnail-enabled {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .MMM-next-episode .show-details.thumbnail-disabled {
-    flex-grow: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: right;
-    text-align: right;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: right;
+  text-align: right;
 }
 
 .MMM-next-episode .show-name {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .MMM-next-episode .show-airdate {
-    margin-left: 10px;
-    text-align: right;
+  margin-left: 10px;
+  text-align: right;
 }
