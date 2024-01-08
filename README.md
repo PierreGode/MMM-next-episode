@@ -45,7 +45,7 @@ In `~/MagicMirror/config/config.js`:
 
 When starting the module the first time without id and hash_key in the config, a QR code will be displayed on the mirror. Like this example:
 
-![example QR code](img/screenshot-qr-code.png)
+![example QR code](img/screenshotqrcode.png)
 
 Scan the QR code from your mirror and a empy page will show.
 
