@@ -16,6 +16,7 @@
     "license": "GPL-3.0-only",
     "dependencies": {
         "qrcode": "^1.5.3",
-        "uuid": "^9.0.1"
+        "axios": "^0.27.2",
+        "dotenv": "^16.0.1"
     }
 }
