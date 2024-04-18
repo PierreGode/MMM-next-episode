@@ -4,6 +4,8 @@ Module.register("MMM-next-episode", {
     id: "",
     hash_key: "",
     displaySeasonAndEpisode: false,
+    displayShowingOn: false,
+    displayEpisodeName: false,
     maxdays: 7,
     ShowThumbnail: true,
     ThumbnailSize: "medium"
@@ -56,10 +58,10 @@ Module.register("MMM-next-episode", {
           time: result.getElementsByTagName("hour")[0].textContent,
           season: result.getElementsByTagName("seasonNumber")[0].textContent,
           episode: result.getElementsByTagName("episodeNumber")[0].textContent,
-          showName: result.getElementsByTagName("imageUrl")[0].textContent.split("/").pop()
-            .split("?")[0].replace(".jpg", ""),
-          thumbnail: `https://static.next-episode.net/tv-shows-images/${sizeMapping[this.config.ThumbnailSize]}/${result.getElementsByTagName("imageUrl")[0].textContent.split("/").pop()
-            .split("?")[0].replace(".jpg", "")}.jpg`,
+          episodeName: result.getElementsByTagName("episodeName")[0].textContent.replace('<!--//--><![CDATA[//>', '').replace('<!--', '').replace('//--><!]]>', ''),
+          showingOn: result.getElementsByTagName("channel_name")[0].textContent.replace('<!--//--><![CDATA[//>', '').replace('<!--', '').replace('//--><!]]>', ''),
+          showName: result.getElementsByTagName("title")[0].textContent,
+          thumbnail: `https://static.next-episode.net/tv-shows-images/${sizeMapping[this.config.ThumbnailSize]}/${result.getElementsByTagName("imageUrl")[0].textContent.split("/").pop().split("?")[0].replace(".jpg", "")}.jpg`,
           airDate: result.getElementsByTagName("countdown")[0].textContent
         };
         Log.log("next-episode, Processed show data: ", showData);
@@ -109,7 +111,7 @@ Module.register("MMM-next-episode", {
           showNameElement.className = "show-name";
           showNameElement.innerHTML = capitalizedShowName;
           showDetails.appendChild(showNameElement);
-
+          
           if (this.config.displaySeasonAndEpisode) {
             const episodeElement = document.createElement("div");
             episodeElement.className = "show-episode";
@@ -117,9 +119,21 @@ Module.register("MMM-next-episode", {
             showDetails.appendChild(episodeElement);
           }
 
+          if (this.config.displayEpisodeName && show.episodeName != "") {
+            const episodeNameElement = document.createElement("div");
+            episodeNameElement.className = "show-episode";
+            episodeNameElement.innerHTML = show.episodeName;
+            showDetails.appendChild(episodeNameElement);
+          }
+
           const airDateElement = document.createElement("div");
+          var airDateString = "";
+          if (this.config.displayShowingOn && show.showingOn != "") {
+            airDateString = `on ${show.showingOn} `;
+          }
           airDateElement.className = "show-airdate";
-          airDateElement.innerHTML = show.airDate;
+          airDateString = airDateString + show.airDate;
+          airDateElement.innerHTML = airDateString;
           showDetails.appendChild(airDateElement);
 
           showElement.appendChild(showDetails);

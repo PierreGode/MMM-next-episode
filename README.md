@@ -33,6 +33,8 @@ In `~/MagicMirror/config/config.js`:
     id: '',
     hash_key: '',
     displaySeasonAndEpisode: false,
+    displayShowingOn: false,
+    displayEpisodeName: false,
     maxdays: 7,
     ShowThumbnail: true,
     ThumbnailSize: 'small',
@@ -66,14 +68,18 @@ After adding values `id` and `hash_key` in the config above, restart the MagicMi
 | `id` | `YOUR ID` | Insert your ID. |
 | `hash_key` | `YOUR HASHKEY` | Insert your hashkey. |
 | `displaySeasonAndEpisode` | `true` or `false` | Show or hide season and episode. |
+| `displayShowingOn` | `true` or `false` | Show or hide channel/service. |
+| `displayEpisodeName` | `true` or `false` | Show or hide episode name. |
 | `maxdays` | example: `300` |  Default `7`. How many days in the future to show shows from. minimum `0` but will always show Today and the next day. |
 |`ShowThumbnail`| `true` or `false` | Show thumbnail of show or movie. |
 |`ThumbnailSize`| `small`, `medium` or `large` | Change size of thumbnail. |
 |`updateInterval`| example: `180` | 180 is default to update avery 3 hours and is the lowest time allowed, set theUpdate interval in minutes. |
 
-## Comming updates
+## Changes
 
-- Change styles from config
+- Fixed show name display
+- Added ability to show Channel/Service the show is airing on 
+- Added ability to show/hide episode name
 
 ## Development
 
