@@ -48,7 +48,7 @@ When starting the module the first time without id and hash_key in the config, a
 
 ![example QR code](img/screenshotqrcode.png)
 
-Scan the QR code from your mirror and a empy page will show.
+Scan the QR code from your mirror and a empty page will show.
 
 **Note: Edit the link and replace USERNAME and PASSWORD**.
 
@@ -72,7 +72,7 @@ After adding values `id` and `hash_key` in the config above, restart the MagicMi
 | `maxdays` | example: `300` |  Default `7`. How many days in the future to show shows from. minimum `0` but will always show Today and the next day. |
 |`ShowThumbnail`| `true` or `false` | Show thumbnail of show or movie. |
 |`ThumbnailSize`| `small`, `medium` or `large` | Change size of thumbnail. |
-|`updateInterval`| example: `180` | 180 is default to update avery 3 hours and is the lowest time allowed, set theUpdate interval in minutes. |
+|`updateInterval`| example: `180` | 180 is default to update every 3 hours and is the lowest time allowed, set theUpdate interval in minutes. |
 
 ## Changes
 
