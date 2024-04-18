@@ -129,7 +129,7 @@ Module.register("MMM-next-episode", {
           const airDateElement = document.createElement("div");
           var airDateString = "";
           if (this.config.displayShowingOn && show.showingOn != "") {
-            airDateString = `on ${show.showingOn} `;
+            airDateString = `On ${show.showingOn} `;
           }
           airDateElement.className = "show-airdate";
           airDateString = airDateString + show.airDate;
