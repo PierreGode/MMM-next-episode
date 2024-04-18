@@ -8,8 +8,7 @@ Update your shows from the app for [Apple](https://apps.apple.com/se/app/next-ep
 
 ## Screenshots
 
-![image](img/screenshot1.png) ![image](img/screenshot2.png)
-![image](img/screenshot3.png) ![image](img/screenshot4.png)
+![image](img/episodeName.png) ![image](img/showingOn.png)
 
 ## How to install
 
