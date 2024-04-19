@@ -42,13 +42,13 @@ module.exports = NodeHelper.create({
 
   async getData (config) {
     const self = this;
-    // Check if id and hash_key are empty
-    if (config.id === "" && config.hash_key === "") {
-      // Generate unique device ID
-      const deviceId = uuidv4();
-      // Create URL for QR code
-      const url = `https://next-episode.net/api/magicmirror/v1/services.php?service=link&device_id=${deviceId}&username=USERNAME&password=PASSWORD`;
-      // Generate QR code
+        // Check if id or hash_key is empty
+        if (config.id === '' || config.hash_key === '') {
+            // Generate unique device ID
+            var deviceId = uuidv4();
+            // Create URL for QR code
+            var url = `https://next-episode.net/api/magicmirror/v1/services.php?service=link&device_id=${deviceId}&username=${config.username}&password=${config.password}`;
+            // Generate QR code
       qrcode.toDataURL(url, (err, url) => {
         if (err) {
           Log.log("next-episode, Error generating QR Code: ", err);
