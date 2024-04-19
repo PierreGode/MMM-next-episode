@@ -31,6 +31,8 @@ In `~/MagicMirror/config/config.js`:
   config: {
     id: '',
     hash_key: '',
+    username: '',
+    password '',
     displaySeasonAndEpisode: false,
     displayShowingOn: false,
     displayEpisodeName: false,
@@ -44,17 +46,15 @@ In `~/MagicMirror/config/config.js`:
 
 ### How to get your id and hash_key
 
+Set  username: '', and password '', in the config.js
+
 When starting the module the first time without id and hash_key in the config, a QR code will be displayed on the mirror. Like this example:
 
 ![example QR code](img/screenshotqrcode.png)
 
-Scan the QR code from your mirror and a empty page will show.
+Scan the QR code from your mirror and a page will show your id and hash They might come together as a one line but the first 9 digits are the id and the rest is the hash.
 
-**Note: Edit the link and replace USERNAME and PASSWORD**.
-
-On your device you have scanned the QR code with, edit the link and change only: USERNAME and PASSWORD with your login information for next-episode to get id and hash.
-
-They might come together as a one line but the first 9 digits are the id and the rest is the hash.
+**Note: You only need to set username and password for Next-Episode in the config.js to get the id and hash, after you added the ID and Hash to the config.js the username and password can be removed from config.js**.
 
 **Note:** Using special characters such as '+', '"', '^', '%', '$', '#', in your password can cause the link to break. You may consider temporarily changing your password for this purpose.
 
@@ -66,6 +66,8 @@ After adding values `id` and `hash_key` in the config above, restart the MagicMi
 | --- | --- | --- |
 | `id` | `YOUR ID` | Insert your ID. |
 | `hash_key` | `YOUR HASHKEY` | Insert your hashkey. |
+| `username` | `YOUR next episode username` | Insert your username temporary. |
+| `password` | `YOUR next episode password` | Insert your password temporary. |
 | `displaySeasonAndEpisode` | `true` or `false` | Show or hide season and episode. |
 | `displayShowingOn` | `true` or `false` | Show or hide channel/service. |
 | `displayEpisodeName` | `true` or `false` | Show or hide episode name. |
@@ -75,7 +77,8 @@ After adding values `id` and `hash_key` in the config above, restart the MagicMi
 |`updateInterval`| example: `180` | 180 is default to update every 3 hours and is the lowest time allowed, set theUpdate interval in minutes. |
 
 ## Changes
-
+- Added new easy QR hash generation from Sc4nd4l
+- PR from ConfuciusZA to Show or hide channel/service
 - Fixed show name display
 - Added ability to show Channel/Service the show is airing on 
 - Added ability to show/hide episode name
