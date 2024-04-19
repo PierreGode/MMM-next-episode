@@ -31,6 +31,8 @@ In `~/MagicMirror/config/config.js`:
   config: {
     id: '',
     hash_key: '',
+    username: '',
+    password '',
     displaySeasonAndEpisode: false,
     displayShowingOn: false,
     displayEpisodeName: false,
@@ -48,13 +50,11 @@ When starting the module the first time without id and hash_key in the config, a
 
 ![example QR code](img/screenshotqrcode.png)
 
-Scan the QR code from your mirror and a empty page will show.
 
-**Note: Edit the link and replace USERNAME and PASSWORD**.
+**Note: you only need to set username and password in the config.js to get the id and hash, after you het the ID and Hash username and password can be removed from config.js**.
 
-On your device you have scanned the QR code with, edit the link and change only: USERNAME and PASSWORD with your login information for next-episode to get id and hash.
 
-They might come together as a one line but the first 9 digits are the id and the rest is the hash.
+Scan the QR code from your mirror and a empty page will show reviealing your id and hash They might come together as a one line but the first 9 digits are the id and the rest is the hash.
 
 **Note:** Using special characters such as '+', '"', '^', '%', '$', '#', in your password can cause the link to break. You may consider temporarily changing your password for this purpose.
 
