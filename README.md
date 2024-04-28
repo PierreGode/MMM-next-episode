@@ -66,7 +66,7 @@ Scan the QR code from your mirror and a page will show your id and hash They mig
 > [!IMPORTANT]
 >Using special characters such as '+', '"', '^', '%', '$', '#', in your password can cause the link to break. You may consider temporarily changing your password for this purpose.
 
-After adding values `id` and `hash_key` in the config above, restart the MagicMirror.
+After adding values `id` and `hash_key` in the config.js, restart the MagicMirror.
 
 ### Config description
 
