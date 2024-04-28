@@ -38,7 +38,7 @@ In `~/MagicMirror/config/config.js`:
     id: '',
     hash_key: '',
     username: '',
-    password '',
+    password: '',
     displaySeasonAndEpisode: false,
     displayShowingOn: false,
     displayEpisodeName: false,
