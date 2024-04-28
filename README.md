@@ -61,9 +61,10 @@ When starting the module the first time without id and hash_key in the config, a
 Scan the QR code from your mirror and a page will show your id and hash They might come together as a one line but the first 9 digits are the id and the rest is the hash.
 
 > [!NOTE]
-> You only need to set username and password for Next-Episode in the config.js to get the id and hash, after you added the ID and Hash to the config.js the username and password can be removed from config.js**.
+> After you added the ID and Hash to the config.js the username and password can be removed from config.js.
 
-**Note:** Using special characters such as '+', '"', '^', '%', '$', '#', in your password can cause the link to break. You may consider temporarily changing your password for this purpose.
+> [!IMPORTANT]
+>Using special characters such as '+', '"', '^', '%', '$', '#', in your password can cause the link to break. You may consider temporarily changing your password for this purpose.
 
 After adding values `id` and `hash_key` in the config above, restart the MagicMirror.
 
