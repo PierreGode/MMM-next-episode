@@ -52,7 +52,7 @@ In `~/MagicMirror/config/config.js`:
 
 ### How to get your id and hash_key
 
-Set  username: '', and password '', in the config.js
+Set  username: '', and password '', in the config.js from next-episode login.
 
 When starting the module the first time without id and hash_key in the config, a QR code will be displayed on the mirror. Like this example:
 
