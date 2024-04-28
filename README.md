@@ -14,8 +14,14 @@ Update your shows from the app for [Apple](https://apps.apple.com/se/app/next-ep
 
 ```bash
 cd MagicMirror/modules
+```
+```bash
 git clone https://github.com/PierreGode/MMM-next-episode
+```
+```bash
 cd MMM-next-episode
+```
+```bash
 npm install
 ```
 
