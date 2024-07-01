@@ -10,7 +10,8 @@ Update your shows from the app for [Apple](https://apps.apple.com/se/app/next-ep
 
 ## Screenshots
 
-![image](img/episodeName.png) ![image](img/showingOn.png)
+![image](img/episodeName.png) ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/6181fc01-5953-4ff4-8084-10826dcb4bd8)
+
 
 ## How to install
 
