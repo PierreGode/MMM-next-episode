@@ -6,7 +6,14 @@ Track the TV shows and movies you watch.
 
 Update your shows from the app for [Apple](https://apps.apple.com/se/app/next-episode-track-tv-shows/id347009526) and [Android](https://play.google.com/store/apps/details?id=net.nextepisode.android).
 
-![GitHub Workflow Status](https://github.com/PierreGode/MMM-next-episode/actions/workflows/review.yml/badge.svg)
+![GitHub Workflow Status](https://github.com/PierreGode/MMM-next-episode/actions/workflows/review.yml/badge.svg) ![Open Issues](https://img.shields.io/github/issues/PierreGode/MMM-next-episode) ![Open PRs](https://img.shields.io/github/issues-pr/PierreGode/MMM-next-episode) ![Tech Stack](https://img.shields.io/badge/stack-Node.js%20%7C%20JavaScript%20%7C%20Express-brightgreen) ![Known Vulnerabilities](https://snyk.io/test/github/PierreGode/MMM-next-episode/badge.svg) ![Activity](https://img.shields.io/github/commit-activity/y/PierreGode/MMM-next-episode)
+
+
+
+
+
+
+
 
 ## Screenshots
 
