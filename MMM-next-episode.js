@@ -90,7 +90,7 @@ Module.register("MMM-next-episode", {
         Log.log(`next-episode, airDateDays: ${airDateDays}`);
 
         if (isNaN(airDateDays) || airDateDays <= this.config.maxdays) {
-          Log.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " and air date: ", show.airDate);
+          Log.log("next-episode, Creating DOM element for show: ", show.showName, " with season and episode: S", show.season, "E", show.episode, " And air date: ", show.airDate);
           const showElement = document.createElement("div");
           showElement.className = "show-element";
 
