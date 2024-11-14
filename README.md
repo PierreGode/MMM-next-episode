@@ -17,7 +17,7 @@ Update your shows from the mobile apps [![App Store](https://img.shields.io/badg
 ![image](img/episodeName.png) ![image](https://github.com/PierreGode/MMM-next-episode/assets/8579922/6181fc01-5953-4ff4-8084-10826dcb4bd8)
 
 
-## How to install
+## How to instasdgsdll
 
 ```bash
 cd MagicMirror/modules
