@@ -1,22 +1,115 @@
-name: GPTcode-reviewer
+name: PR summary by AI
 
 on:
   pull_request:
     types:
       - opened
       - synchronize
-permissions: write-all
+      - reopened
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
 jobs:
-  review:
+  pr_summary:
+    name: PR Summary
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: PR Summary
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
+        run: |
+          python - <<EOF
+          import os
+          import requests
+          import json
+
+          event_path = os.environ.get('GITHUB_EVENT_PATH')
+          with open(event_path, 'r') as f:
+              event = json.load(f)
+
+          pr_number = event['pull_request']['number']
+          repo_full_name = event['repository']['full_name']
+          token = os.environ.get('GITHUB_TOKEN')
+          openai_key = os.environ.get('OPENAI_API_KEY')
+
+          headers = {
+              'Authorization': f'token {token}',
+              'Accept': 'application/vnd.github.v3.diff',
+          }
+          diff_url = event['pull_request']['url'] + "/files"
+          pr_files = requests.get(diff_url, headers=headers).json()
+
+          diff_text = ""
+          for fdata in pr_files:
+              filename = fdata['filename']
+              patch = fdata.get('patch', 'No changes')
+              diff_text += f"File: {filename}\nPatch:\n"
+              for line in patch.split('\n'):
+                  if line.startswith('+'):
+                      diff_text += f"Added: {line[1:]}\n"
+                  elif line.startswith('-'):
+                      diff_text += f"Removed: {line[1:]}\n"
+                  else:
+                      diff_text += f"{line}\n"
+
+          summary_prompt = (
+              f"Analyze the following pull request diff and summarize the changes. "
+              f"- Key files and components modified. "
+              f"- Main purpose of the changes (e.g., bug fixes, feature additions, optimizations). "
+              f"- Specific functionalities introduced, modified, or removed. "
+              f"Highlight lines added (marked with 'Added:') and lines removed (marked with 'Removed:'). "
+              f"- Any potential implications or considerations (e.g., performance impacts, breaking changes, dependencies). "
+              f"Ensure the summary clearly states which version contains corrections or bug fixes.\n\n"
+              f"Here is the diff:\n\n{diff_text}"
+          )
+
+          ai_headers = {"Content-Type": "application/json", "Authorization": f"Bearer {openai_key}"}
+          data_summary = {
+              "model": "gpt-4o-mini",
+              "messages": [{"role": "user", "content": summary_prompt}],
+              "temperature": 0.7
+          }
+          summary_response = requests.post("https://api.openai.com/v1/chat/completions", headers=ai_headers, json=data_summary)
+          summary_response.raise_for_status()
+          summary = summary_response.json()['choices'][0]['message']['content'].strip()
+
+          comment_url = f"https://api.github.com/repos/{repo_full_name}/issues/{pr_number}/comments"
+          summary_comment = {
+              "body": f"**AI Pull Request Summary:**\n{summary}"
+          }
+          requests.post(comment_url, headers={'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}, json=summary_comment)
+
+          print("PR Summary posted successfully.")
+          EOF
+
+  code_review:
+    name: AI Code Review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: GPTcode-reviewer
+      - name: AI Code Review
         uses: PierreGode/GPTcode-reviewer@main
         with:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_API_MODEL: "gpt-4o-mini" # Optional: defaults to "gpt-4"
-          exclude: "**/*.json, **/*.md" # Optional: exclude patterns separated by commas
+          OPENAI_API_MODEL: "gpt-4o-mini"
+          exclude: "**/*.json,**/*.md"
