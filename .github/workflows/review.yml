@@ -20,6 +20,12 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: Read README.md
+        id: read_readme
+        run: |
+          README_CONTENT=$(cat README.md)
+          echo "::set-output name=README::$README_CONTENT"
+
       - name: Set Up Python
         uses: actions/setup-python@v4
         with:
@@ -34,6 +40,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
+          README_CONTENT: ${{ steps.read_readme.outputs.README }}
         run: |
           python - <<EOF
           import os
@@ -48,6 +55,7 @@ jobs:
           repo_full_name = event['repository']['full_name']
           token = os.environ.get('GITHUB_TOKEN')
           openai_key = os.environ.get('OPENAI_API_KEY')
+          readme_content = os.environ.get('README_CONTENT')
 
           headers = {
               'Authorization': f'token {token}',
@@ -70,14 +78,16 @@ jobs:
                       diff_text += f"{line}\n"
 
           summary_prompt = (
-              f"Analyze the following pull request diff and summarize the changes. "
-              f"- Key files and components modified. "
-              f"- Main purpose of the changes (e.g., bug fixes, feature additions, optimizations). "
-              f"- Specific functionalities introduced, modified, or removed. "
-              f"Highlight lines added (marked with 'Added:') and lines removed (marked with 'Removed:'). "
-              f"- Any potential implications or considerations (e.g., performance impacts, breaking changes, dependencies). "
-              f"Ensure the summary clearly states which version contains corrections or bug fixes.\n\n"
-              f"Here is the diff:\n\n{diff_text}"
+              f"Based on the following README, provide a comprehensive analysis of the pull request. \n\n"
+              f"**README Content:**\n{readme_content}\n\n"
+              f"**Pull Request Diff:**\n{diff_text}\n\n"
+              f"Please include the following in your summary:\n"
+              f"- Key files and components modified.\n"
+              f"- Main purpose of the changes (e.g., bug fixes, feature additions, optimizations).\n"
+              f"- Specific functionalities introduced, modified, or removed.\n"
+              f"  - Highlight lines added (marked with 'Added:') and lines removed (marked with 'Removed:').\n"
+              f"- Any potential implications or considerations (e.g., performance impacts, breaking changes, dependencies).\n"
+              f"Ensure the summary clearly states which version contains corrections or bug fixes."
           )
 
           ai_headers = {"Content-Type": "application/json", "Authorization": f"Bearer {openai_key}"}
@@ -106,6 +116,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Read README.md
+        id: read_readme_review
+        run: |
+          README_CONTENT=$(cat README.md)
+          echo "::set-output name=README::$README_CONTENT"
+
       - name: AI Code Review
         uses: PierreGode/GPTcode-reviewer@main
         with:
@@ -113,3 +129,6 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_MODEL: "gpt-4o-mini"
           exclude: "**/*.json,**/*.md"
+          # Assuming the action allows passing additional context, include README
+          additional_context: ${{ steps.read_readme_review.outputs.README }}
+          
