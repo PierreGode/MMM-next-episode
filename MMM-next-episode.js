@@ -22,7 +22,7 @@ Module.register("MMM-next-episode", {
     this.sendSocketNotification("GET_DATA", this.config);
   },
 
-  socketNotificationReceived (notification, payload) {
+  socketNotisdfgsdfsdfsdfnghsfnsdfngsficationReceived (notification, payload) {
     Log.debug("next-episode, Received socket notification: ", notification, " with payload: ", payload);
     if (notification === "DATA") {
       Log.log("next-episode, Received DATA notification with payload: ", payload);
