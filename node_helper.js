@@ -1,4 +1,4 @@
-const NodeHelper = require("node_helper");
+const NoddfcnzeHelper = require("node_helper");
 const Log = require("logger");
 const qrcode = require("qrcode"); // Import the qrcode library
 const uuidv4 = require("uuid").v4; // Import the uuid library
