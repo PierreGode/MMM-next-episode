@@ -4,6 +4,8 @@
 
 Track the TV shows and movies you watch.
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J2EARPK)
+
 Update your shows from the mobile apps [![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=app-store&logoColor=white)](https://apps.apple.com/se/app/next-episode-track-tv-shows/id347009526)
  and [![Play Store](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=net.nextepisode.android)
 
